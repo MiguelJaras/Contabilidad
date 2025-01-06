@@ -1,0 +1,1012 @@
+/* Hoja de estilos CSS predeterminada para un nuevo proyecto de aplicación Web*/
+.invisible
+{
+	display:none;
+}
+
+div#div-ListPanel2 {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+    position: relative;
+    /*scrollbar-base-color: Silver;*/
+}
+		
+TFOOT, THEAD	{	
+	font-size:	1em;
+	word-spacing:	normal;
+	letter-spacing:	normal;
+	text-transform:	none;
+	font-family: Arial, Helvetica, sans-serif;
+	}	
+		
+.String 
+{
+	font-family: Tahoma, Arial, Helvetica, sans-serif;
+	font-size: 9pt;
+	border: 1px solid #666666;
+	color: Black;
+	width: 190px; 
+}
+	
+SMALL	{	
+	font-size:	.7em;
+	}	
+
+BIG	{	
+	font-size:	1.17em;
+	}	
+
+BLOCKQUOTE, PRE	{	
+	font-family:	Courier New, monospace;
+	}	
+	
+
+UL LI	{	
+	list-style-type:	square ;
+	}	
+
+UL LI LI	{	
+	list-style-type:	disc;
+	}	
+
+UL LI LI LI	{	
+	list-style-type:	circle;
+	}	
+	
+OL LI	{	
+	list-style-type:	decimal;
+	}	
+
+OL OL LI	{	
+	list-style-type:	lower-alpha;
+	}	
+
+OL OL OL LI	{	
+	list-style-type:	lower-roman;
+	}	
+
+IMG 	{
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+    font-weight: 700;
+}
+
+.tdTextNoBorder{
+	font-weight: normal;
+	font-size: 10pt;
+	color:#0066CC;
+	width: 100px;
+	font-family: Arial, Helvetica, Sans-Serif;
+	border-right: #FFFFFF 1px solid;
+	border-top: #FFFFFF 1px;
+	border-left: #FFFFFF 1px;
+	border-bottom: #FFFFFF 1px solid;
+}
+.tdText{
+	font-weight: normal;
+	font-size: 10pt;
+	color:#0066CC;
+	width: 100px;
+	font-family: Arial, Helvetica, Sans-Serif;
+	border-right: #0099FF 1px solid;
+	border-top: gray 2px;
+	border-left: gray 2px;
+	border-bottom: #0099FF 1px solid;
+}
+.tdText2{
+	font-weight: normal;
+	font-size: 10pt;
+	color:White;
+	width: 100px;
+	font-family: Arial, Helvetica, Sans-Serif;
+	border-right: #0099FF 1px solid;
+	border-top: gray 2px;
+	border-left: gray 2px;
+	border-bottom: #0099FF 1px solid;
+}
+.tdAdvertencia{
+	color:#FF0000;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:9px;
+}
+
+.tdNormal{
+	color:#468;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:12px;
+}
+
+.tdNormalSmall{
+	color:#468;
+	text-align:center;
+	font-weight:bold;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Tahoma;
+	font-size:9px;
+}
+
+.tdNormalWhiteBold{
+	color:#FFFFFF;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.tdHead{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-weight:bold;
+	color:#bac1d7;
+	text-align:center; 
+	padding-top:6px; 
+	padding-bottom:6px;
+}
+
+.tdHeadGreen{
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:20px;
+	font-weight:bold;
+	color:#006633;
+	text-align:center; 
+}
+
+.tdNormalBold{
+	color:#468;
+	font-weight:bolder;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:12px;
+}
+
+.tdSubHead{
+	color:#468;
+	font-weight:bolder;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:18px;
+}
+
+.tdSubHeadGray{
+	color:#999999;
+	font-weight:bolder;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:18px;
+}
+
+.tdSubHeadWhite{
+	color:#FFFFFF;
+	font-weight:bolder;
+	text-align:left;
+	padding-right:0px; 
+	padding-left:0px;
+	padding-top:0px; 
+	padding-bottom:0px;
+	font-family:Arial;
+	font-size:16px;
+}
+
+
+.tdBoton
+{
+
+	font-weight: bold;
+	font-size: 9pt;
+	color:White;
+	border-top-style: none;
+	font-family: Arial, Helvetica, Sans-Serif;
+	border-right-style: none;
+	border-left-style: none;
+	background-color:#006699;
+	border-bottom-style: none;
+}
+
+.tdCuadro {
+	border-top-style: solid;
+	border-right-style: solid;
+	border-bottom-style: solid;
+	border-left-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	font-weight:bolder;
+	background-color:#FFFF99;
+}
+
+
+.tdCuadroLlamativo {
+	color:#CC3300;
+	font-size:20px;
+	font-weight:bolder;
+	background-color:#FFFF99;
+}
+.tdHeadUser{
+	background-color:#666666;
+	color:#FFFFFF;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:10px;
+}
+
+
+.tHead
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 17px;
+    COLOR:Navy;
+	padding-left:4px;
+	padding-top:4px;
+	padding-bottom:4px;
+    FONT-FAMILY: TAHOMA;
+    BACKGROUND-COLOR:#F0F8FF;
+	border-bottom-style:solid;
+	border-top-style:solid;
+	border-color:#000000;
+	border-width:0px;
+}
+
+.tLetra
+{
+	padding-left:5px;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR:Navy;
+    text-align:left;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+
+.tLetra3
+{
+	height:23px;
+    FONT-WEIGHT:bold;
+    FONT-SIZE: 8pt;
+    COLOR:Navy;
+    text-align:left;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+
+.tLetra4
+{
+    FONT-WEIGHT:bold;
+    FONT-SIZE: 8pt;
+    COLOR:#B0C4DE;
+    text-align:left;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: transparent
+}
+
+.tLetra5
+{
+	height:20px;
+	padding-left:5px;
+    FONT-WEIGHT:bolder;
+    FONT-SIZE: 8pt;
+    COLOR:Black;
+    text-align:left;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+
+.tLetra6
+{
+    FONT-WEIGHT:bold;
+    FONT-SIZE: 9pt;
+    COLOR:#104E8B;
+    text-align:center;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #A3C0E8;
+    width:100%;
+}
+
+
+.tLetra2
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #ffffff;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+.tLetraMain
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #000000;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+.tError
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #ff0000;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+.tEnc
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    COLOR: #000000;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #EBE9ED
+}
+.tBoton
+{
+    FONT-WEIGHT: bold;
+    BACKGROUND-COLOR: #ffd989;
+    FONT-SIZE: 10px
+}
+.tBotonAyuda
+{
+    FONT-WEIGHT: bold;
+    WIDTH: 10px;
+    BACKGROUND-COLOR: #ffd989;
+    FONT-SIZE: 10px
+}
+.tdBarra
+{
+    BORDER-RIGHT: buttonhighlight 1px inset;
+    BORDER-TOP: buttonhighlight 1px inset;
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 8pt;
+    BORDER-LEFT: buttonhighlight 1px inset;
+    WIDTH: 190px;
+    BORDER-BOTTOM: buttonhighlight 1px inset;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: #ffffff
+}
+.tDatos400
+{
+	
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 400px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tDatos250
+{
+	
+    BORDER-RIGHT: #B3B3B3 1px solid;
+    BORDER-TOP:  #B3B3B3 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT:  #B3B3B3 1px solid;
+    WIDTH: 250px;
+    BORDER-BOTTOM:  #B3B3B3 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tDatos250Req
+{
+	
+    BORDER-RIGHT: #B0171F 1px solid;
+    BORDER-TOP:  #B0171F 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT:  #B0171F 1px solid;
+    WIDTH: 250px;
+    BORDER-BOTTOM:  #B0171F 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+
+
+.tDatosC250
+{
+	
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 250px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    text-align:right;
+    BACKGROUND-COLOR: window
+}
+
+.tDatos200
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 200px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+.tDatos150
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 150px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tDatos100
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 100px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+.tDatos50
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 50px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tDatosNoBorder{
+    BORDER-RIGHT: #EBE9ED 0px solid;
+    BORDER-TOP: #EBE9ED 0px solid;
+	color:#000000;
+    FONT-SIZE: 8pt;
+    BORDER-LEFT: #EBE9ED 0px solid;
+    WIDTH: 100px;
+    BORDER-BOTTOM: #EBE9ED 0px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: #FFFFFF;
+}
+.tDatosNoBorderColor{
+    BORDER-RIGHT: #EBE9ED 0px solid;
+    BORDER-TOP: #EBE9ED 0px solid;
+	color:#000000;
+    FONT-SIZE: 8pt;
+	font-weight:bold;
+    BORDER-LEFT: #EBE9ED 0px solid;
+    WIDTH: 100px;
+    BORDER-BOTTOM: #EBE9ED 0px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR:#FFFFFF;
+}
+
+.tDatos80
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 7pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 80px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+.tDatos60
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 7pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 60px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+.tDatosDisable
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 8pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 60px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR:#FFFFCC;
+}
+.tDatosReadOnly
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 7pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 60px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR:#E0E0E0;
+}
+
+.tDatos25
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 7pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    WIDTH: 25px;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+.tDesp
+{
+    BORDER-RIGHT: #EBE9ED 1px solid;
+    BORDER-TOP: #EBE9ED 1px solid;
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 7pt;
+    BORDER-LEFT: #EBE9ED 1px solid;
+    BORDER-BOTTOM: #EBE9ED 1px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: #ebf0e8
+}
+.tMenuLet
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    COLOR: #00003a;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: transparent
+}
+.tMenuEnc
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 12px;
+    COLOR: #000000;
+    FONT-FAMILY: Arial;
+    BACKGROUND-COLOR: #EBE9ED
+}
+
+.tabEnsambleSelect {
+	height: 20px;
+	border-color : white Gray Gray white; 
+	border-top-width: thin;
+	border-right-width: thin;
+	cursor:hand;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	padding: 1px;
+	background-color: #BCD0E8;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+	font-size: 12px;
+}	
+.tabEnsamble {
+	height: 20px;
+	cursor:hand;
+	border-color : white Gray Gray white; 
+	border-top-width: thin;
+	border-right-width: thin;
+	border-left-width: thin;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	padding: 1px;
+	background-color: #EBE9ED;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bolder;
+	font-size: 12px;
+}
+.Tab_color
+{
+ font-size : 9px;
+  font-family:Verdana;
+  border:0px solid #aaa;
+  padding:10px;
+  
+	}
+	
+input.btn { 
+	  color:#050; 
+	  font: bold 84% 'trebuchet ms',helvetica,sans-serif; 
+	  background-color:#fed; 
+	  border: 1px solid; 
+	  border-color: #696 #363 #363 #696; 
+	  /*filter:progid:DXImageTransform.Microsoft.Gradient 
+	  (GradientType=0,StartColorStr='#ffffffff',EndColorStr='#ffeeddaa'); */
+	} 
+	
+.tCostoDirecto
+{
+    BORDER-RIGHT: #EBE9ED 0px solid;
+    BORDER-TOP: #EBE9ED 0px solid;
+    FONT-WEIGHT:bold;
+	 color:#0066CC   ;
+    FONT-SIZE: 12pt;
+    BORDER-LEFT: #EBE9ED 0px solid;
+    WIDTH: 100px;
+    BORDER-BOTTOM: #EBE9ED 0px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tPrice
+{
+    BORDER-RIGHT: #EBE9ED 0px solid;
+    BORDER-TOP: #EBE9ED 0px solid;
+    FONT-WEIGHT:normal;
+	color:Navy;
+    FONT-SIZE: 12pt;
+    BORDER-LEFT: #EBE9ED 0px solid;
+    WIDTH: 100px;
+    BORDER-BOTTOM: #EBE9ED 0px solid;
+    FONT-FAMILY: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: window
+}
+
+.tLabel01
+{
+    BORDER-RIGHT: #E0E0E0 0px solid;
+    BORDER-TOP: #E0E0E0 0px solid;
+    FONT-WEIGHT:bold;
+	 color:Black;
+    FONT-SIZE: 10pt;
+    BORDER-LEFT: #E0E0E0 0px solid;
+    WIDTH: 90px;
+    BORDER-BOTTOM: #E0E0E0 0px solid;
+    FONT-FAMILY:BOLD: Arial, Helvetica, Sans-Serif;
+    BACKGROUND-COLOR: #E0E0E0
+}
+
+.tdCuadroLlamativo2 {
+	color:#0066CC;
+	font-size:14px;
+	font-weight:bolder;
+	background-color:White;
+}
+
+.tdButton_Aqua
+{	
+    color: White;   
+    font-size: 9pt;   
+    font-family: Tahoma;				    
+	font-weight:normal;    
+    vertical-align: middle;	 		
+    border: solid 1px #A3C0E8;	
+    background: #E2F0FF url('gvHeaderBackground.gif') top;
+    background-repeat:repeat-x;
+    padding: 1px 1px 1px 1px;
+	cursor: pointer;
+	cursor: hand;
+    height:23px;
+}
+
+.tdButton_OrangeYellow
+{	
+    color: Navy;   
+    font-size: 9pt;   
+    font-family: Tahoma;				    
+	font-weight:normal;    
+    vertical-align: middle;	 		
+    border: solid 1px #A3C0E8;	
+    background: #E2F0FF url('edtButtonHoverBack.gif') top;
+    background-repeat:repeat-x;
+    padding: 1px 1px 1px 1px;
+	cursor: pointer;
+	cursor: hand;
+    height:23px;
+}
+
+
+.tdButton_Orange
+{	
+    color: Navy;   
+    font-size: 9pt;   
+    font-family: Tahoma;				    
+	font-weight:normal;    
+    vertical-align: middle;	 		
+    border: solid 1px #A3C0E8;	
+    background: #E2F0FF url('edtCalendarButtonPressedBack.gif') top;
+    background-repeat:repeat-x;
+    padding: 1px 1px 1px 1px;
+	cursor: pointer;
+	cursor: hand;
+    height:23px;
+}
+
+
+
+
+.tdButtonHover_Aqua 
+{
+    color: #7E3C31;   
+    background: #FEDC75 url('edtButtonHoverBack.gif') top;
+    background-repeat: repeat-x;
+    border: solid 1px #D6A886;	    
+}
+
+.pagger
+{
+    font-family: tahoma;
+    font-size: 8pt;
+    color: #999999;
+}
+
+div#div-ListPanel {
+width: 100%;
+height: 520px;
+overflow:auto;
+position:relative;
+
+/*scrollbar-base-color: Silver;*/ }
+
+div#div-ListPanelCon {
+width: 100%;
+height: 800px;
+overflow:auto;
+position:relative;
+/*scrollbar-base-color: Silver;*/ }
+
+div#div-ListPanel3 {
+width: 99%;
+height: 600px;
+overflow:auto;
+position:absolute;
+/*scrollbar-base-color: Silver;*/ }
+
+div#div-ListPanel4 {
+width: 99%;
+height: 350px;
+overflow:auto;
+position:relative;
+/*scrollbar-base-color: Silver;*/ }
+
+div#div-ListPanel5{
+width: 100%;
+height: 300px;
+overflow:auto;
+position:relative;
+scrollbar-base-color: Silver; }
+
+div#div-ListPanel7 {
+width: 99%;
+height: 220px;
+overflow:auto;
+position:relative;
+/*scrollbar-base-color: Silver;*/ }
+
+div#div-Lote{
+width: 99%;
+height: 550px;
+overflow:auto;
+position:relative;
+text-align:center;
+/*scrollbar-base-color: Silver;*/ }
+
+.GridViewAlternatingRow {
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 9pt;
+color: Black;
+background-color:#A3C0E8; }
+
+.GridViewRow {
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 9pt;
+color: Black;
+border-width : 1px; 
+border-color : #EEEEEE;
+background-color:#FFFFFF; 
+border-style : solid;
+}
+
+.GridViewRow:hover {
+    background-color: #F0F0F0;
+    cursor: pointer;
+}
+
+div#div-ListPanel6 {
+width: 900px;
+height: 400px;
+overflow:auto;
+position:relative;
+overflow:scroll;
+/*scrollbar-base-color: Silver;*/ }
+
+
+.GridViewAlternatingRow2 {
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 9pt;
+color: Navy;
+background-color:#F5F5F5; }
+
+.GridViewRow2 {
+font-family: Tahoma, Arial, Helvetica, sans-serif;
+font-size: 8pt;
+border-width : 1px; 
+border-color : #EEEEEE;
+background-color:#EAF7FB; 
+border-style : solid;
+color:#000066;
+}
+.PesSelected
+{
+	color:White;
+	font-weight:bold;
+	font-family:Arial;
+	font-size:10pt;
+	background-color:#E6E6FA;
+	border:5px;
+	border-bottom:5px;
+	border-left:5px;
+	border-right:5px;
+	border-top:5px;	
+	
+}
+
+.PesUnSelected
+{
+	color:#005EAB;
+	font-weight:lighter;
+	font-family:Arial;
+	font-size:10pt;
+	background-color:White;
+	border:5px;
+	border-bottom:0;
+	border-left:5px;
+	border-right:5px;
+	border-top:5px;	
+}
+
+
+.MenuItem
+{
+	border-bottom: inset 1px #CCCCCC;
+	border-right : inset 1px #CCCCCC;
+	border-top : : inset 1px #CCCCCC;
+}
+
+.SubMenuItem
+{
+	border-left : inset 1px #CCCCCC;
+	border-right : inset 1px #CCCCCC;
+	border-top : : inset 1px #CCCCCC;
+}
+
+#overlay 
+{
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:390px;
+     height:130px;
+     text-align:center;
+     z-index: 1000;
+     background-image:url(edtButtonHoverBack.gif);
+}
+
+.AresFormGridViewTypeBatchG 
+{
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    color: Navy;
+    background-color:#CCFFCC; 
+}
+
+.AresFormGridViewTypeBatchV 
+{
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 8pt;
+    color: Navy;
+    background-color:#FFCCFF; 
+}
+
+.locked th 
+{
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+    font-size: 8pt;
+    background-color: #6D81A4;
+    color: White;
+    border-right: 1px solid;
+    border-right-color: #CCCCCC;
+    position:relative;
+    cursor: default;
+    top: expression(this.offsetParent.scrollTop);
+}
+
+
+div#div-ListPanel9
+{
+    width: 99%;
+    height: 350px;
+    overflow-x:hidden;
+    overflow-y:scroll;
+    position:relative;
+    scrollbar-base-color: Silver; 
+}
+
+.gridCartera
+{
+    background-color:#FFCC99;
+    color:#000066;
+    font-family: Tahoma;
+    font-size: 8pt;
+    Height:20px
+}
+
+
+.gridCartera
+{
+    background-color:#FFCC99;
+    color:#000066;
+    font-family: Tahoma;
+    font-size: 8pt;
+    Height:20px
+}
+
+.Link 
+{    
+    color:Maroon;    
+} 
+
+ 
+div#div-ListPanelPoliza{
+width: 100%;
+height: 500px;
+overflow:auto;
+position:relative;
+scrollbar-base-color: Silver; }
+
+
+
+div#div-ListPanelPoliza2{
+width: 100%;
+height: 400px;
+overflow:auto;
+position:relative;
+scrollbar-base-color: Silver; }

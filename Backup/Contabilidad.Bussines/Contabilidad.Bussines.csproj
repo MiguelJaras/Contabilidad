@@ -1,0 +1,102 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{73117003-F8A8-4D4C-8314-45D09EB89AC3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contabilidad.Bussines</RootNamespace>
+    <AssemblyName>Contabilidad.Bussines</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Contabilidad.DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Contabilidad.Entity, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AfectaSaldos.cs" />
+    <Compile Include="Area.cs" />
+    <Compile Include="Articulo.cs" />
+    <Compile Include="Balance.cs" />
+    <Compile Include="CargarProveedor.cs" />
+    <Compile Include="CerrarPeriodo.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="Clientes.cs" />
+    <Compile Include="Colonia.cs" />
+    <Compile Include="Conciliaciones.cs" />
+    <Compile Include="Email.cs" />
+    <Compile Include="Individualizacion.cs" />
+    <Compile Include="Parametros.cs" />
+    <Compile Include="ProspectoEsc.cs" />
+    <Compile Include="TempPoliza_Remplazo.cs" />
+    <Compile Include="DigBalanza.cs" />
+    <Compile Include="DigCuentas.cs" />
+    <Compile Include="CuentasRet.cs" />
+    <Compile Include="EdoFinancieros.cs" />
+    <Compile Include="EstadoResultados.cs" />
+    <Compile Include="Estados.cs" />
+    <Compile Include="EstadosFinRubros.cs" />
+    <Compile Include="Iva.cs" />
+    <Compile Include="PolizasDet.cs" />
+    <Compile Include="Cuentas.cs" />
+    <Compile Include="CuentasBancarias.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="EstructuraPolizaDet.cs" />
+    <Compile Include="EstructuraPolizaEnc.cs" />
+    <Compile Include="Factura.cs" />
+    <Compile Include="FacturaDet.cs" />
+    <Compile Include="List.cs" />
+    <Compile Include="Menu.cs" />
+    <Compile Include="Obra.cs" />
+    <Compile Include="OrdenCompra.cs" />
+    <Compile Include="OrdenCompraDet.cs" />
+    <Compile Include="Poliza.cs" />
+    <Compile Include="PolizasEnc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prospecto.cs" />
+    <Compile Include="Proveedor.cs" />
+    <Compile Include="Rubros.cs" />
+    <Compile Include="RubrosCuentas.cs" />
+    <Compile Include="RubrosTipos.cs" />
+    <Compile Include="Sector.cs" />
+    <Compile Include="TipoMovimiento.cs" />
+    <Compile Include="TiposPoliza.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="Values.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

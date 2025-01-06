@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB9C600D-302E-44B9-A48B-8F4759FCEC24}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contabilidad.Entity</RootNamespace>
+    <AssemblyName>Contabilidad.Entity</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DAC.Ares.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Entity_Conciliacion.cs" />
+    <Compile Include="Entity_Servidor.cs" />
+    <Compile Include="EntityNotaCreditoGenerar.cs" />
+    <Compile Include="Entity_FacturasGenerar.cs" />
+    <Compile Include="Entity_CargarProveedor.cs" />
+    <Compile Include="Entity_Email.cs" />
+    <Compile Include="Entity_FacturasEstimacionesGenerar.cs" />
+    <Compile Include="Entity_FacturasGenerarComisiones.cs" />
+    <Compile Include="Entity_Parametros.cs" />
+    <Compile Include="Entity_ProspectoEsc.cs" />
+    <Compile Include="Entity_TempPoliza_Remplazo.cs" />
+    <Compile Include="Entity_Area.cs" />
+    <Compile Include="Entity_DigBalanza.cs" />
+    <Compile Include="Entity_DigCuentas.cs" />
+    <Compile Include="Entity_AfectaSaldos.cs" />
+    <Compile Include="Entity_CerrarPeriodo.cs" />
+    <Compile Include="Entity_Colonia.cs" />
+    <Compile Include="Entity_Conciliaciones.cs" />
+    <Compile Include="EntityBaseClass.cs" />
+    <Compile Include="Entity_Articulo.cs" />
+    <Compile Include="Entity_Clientes.cs" />
+    <Compile Include="Entity_CuentasBancarias.cs" />
+    <Compile Include="Entity_Cuentas.cs" />
+    <Compile Include="Entity_CuentasRet.cs" />
+    <Compile Include="Entity_EdoFinancieros.cs" />
+    <Compile Include="Entity_Empresa.cs" />
+    <Compile Include="Entity_Estados.cs" />
+    <Compile Include="Entity_EstadosFinRubros.cs" />
+    <Compile Include="Entity_EstructuraPolizaDet.cs" />
+    <Compile Include="Entity_EstructuraPolizaEnc.cs" />
+    <Compile Include="Entity_Factura.cs" />
+    <Compile Include="Entity_FacturaDet.cs" />
+    <Compile Include="Entity_Iva.cs" />
+    <Compile Include="Entity_Menu.cs" />
+    <Compile Include="Entity_Obra.cs" />
+    <Compile Include="Entity_OrdenCompra.cs" />
+    <Compile Include="Entity_OrdenCompraDet.cs" />
+    <Compile Include="Entity_Poliza.cs" />
+    <Compile Include="Entity_PolizasDet.cs" />
+    <Compile Include="Entity_PolizasEnc.cs" />
+    <Compile Include="Entity_Prospectos.cs" />
+    <Compile Include="Entity_Proveedor.cs" />
+    <Compile Include="Entity_Referencia.cs" />
+    <Compile Include="Entity_Rubros.cs" />
+    <Compile Include="Entity_RubrosCuentas.cs" />
+    <Compile Include="Entity_RubrosTipos.cs" />
+    <Compile Include="Entity_Sector.cs" />
+    <Compile Include="Entity_TipoMovimiento.cs" />
+    <Compile Include="Entity_TiposPoliza.cs" />
+    <Compile Include="Entity_Usuarios.cs" />
+    <Compile Include="ListEntity.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

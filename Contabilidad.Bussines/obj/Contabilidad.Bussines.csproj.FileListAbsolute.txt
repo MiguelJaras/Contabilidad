@@ -1,0 +1,88 @@
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Bussines.pdb
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\DAC.Ares.Common.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Microsoft.ApplicationBlocks.Data.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.Entity.pdb
+C:\Compartida\Contabilidad\Contabilidad.Bussines\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Compartida\Contabilidad\Contabilidad.Bussines\obj\Debug\ResolveAssemblyReference.cache
+C:\Compartida\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.dll
+C:\Compartida\Contabilidad\Contabilidad.Bussines\obj\Debug\Contabilidad.Bussines.pdb

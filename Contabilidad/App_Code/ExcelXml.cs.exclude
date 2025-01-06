@@ -1,0 +1,2139 @@
+using System;
+using System.Data;
+using System.IO;
+using CarlosAg.ExcelXmlWriter;
+using Contabilidad.Bussines;
+
+public class ExcelXml
+{
+    public ExcelXml()
+    {
+        
+    }   
+
+    public void ExportExcel(Stream filename, string[] parameters, int reporte)
+    {       
+        Workbook workbook = new Workbook();
+        workbook.Properties.Author = "Ruben Mora Martinez";
+        workbook.Properties.LastAuthor = "";
+        workbook.Properties.Created = DateTime.Now;
+        workbook.Properties.LastSaved = DateTime.Now;
+        workbook.Properties.Version = "0.1";
+        workbook.ExcelWorkbook.WindowHeight = 10110;
+        workbook.ExcelWorkbook.WindowWidth = 15180;
+        workbook.ExcelWorkbook.WindowTopX = 480;
+        workbook.ExcelWorkbook.WindowTopY = 120;
+        workbook.ExcelWorkbook.ProtectWindows = false;
+        workbook.ExcelWorkbook.ProtectStructure = false;
+        Styles(workbook.Styles);
+
+        switch (reporte)
+        {
+            //case 1:
+            //    Estimaciones(workbook.Worksheets, parameters.GetValue(0).ToString(), parameters.GetValue(1).ToString());
+            //    break;
+            //case 0:
+            //    EstimacionesTodo(workbook.Worksheets, parameters.GetValue(0).ToString());
+            //    break;
+            case 3:
+                ER(workbook.Worksheets, parameters.GetValue(1).ToString(), parameters.GetValue(2).ToString(), parameters.GetValue(3).ToString(), parameters.GetValue(4).ToString(), parameters.GetValue(5).ToString());
+                break;
+            //case 4:
+            //    CantidadFrente(workbook.Worksheets, parameters.GetValue(1).ToString(), parameters.GetValue(2).ToString(), parameters.GetValue(3).ToString(), parameters.GetValue(4).ToString(), parameters.GetValue(5).ToString(), parameters.GetValue(6).ToString(), parameters.GetValue(7).ToString(), parameters.GetValue(8).ToString());
+            //    break;
+            //case 5:
+            //    ConceptosPendientes(workbook.Worksheets, parameters.GetValue(0).ToString());
+            //    break;
+            //case 6:
+            //    Estimado(workbook.Worksheets, parameters.GetValue(0).ToString(), parameters.GetValue(1).ToString());
+            //    break;
+            //case 7:
+            //    MOSUBFRENTE(workbook.Worksheets, parameters.GetValue(0).ToString());
+            //    break;
+            //case 8:
+            //    TarjetaPartida(workbook.Worksheets, parameters.GetValue(0).ToString());
+            //    break;
+            //case 9:
+            //    Resumen(workbook.Worksheets, parameters.GetValue(1).ToString(), parameters.GetValue(2).ToString(), parameters.GetValue(3).ToString(), parameters.GetValue(4).ToString(), parameters.GetValue(5).ToString());
+            //    break;
+            //case 10:
+            //    Auditoria(workbook.Worksheets, parameters.GetValue(0).ToString(), parameters.GetValue(1).ToString());
+            //    break;
+            //case 11:
+            //    Contractual(workbook.Worksheets, parameters.GetValue(1).ToString(), parameters.GetValue(2).ToString());
+            //    break;                
+                
+        }
+
+        workbook.Save(filename);
+        workbook = null;
+    }
+
+    //public void Estimaciones(WorksheetCollection sheets, string obra, string Estimado)
+    //{
+    //    DataTable dtActividades;
+    //    DataTable dtInsumos;
+    //    DataRow drActividades;
+    //    DataRow drInsumos;
+    //    DataTable dtLotes;
+    //    DataRow drLotes;
+    //    DataTable dtEstimado;
+    //    DataRow drEstimado;
+    //    decimal dblImporte = 0;
+    //    string value;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper;
+    //    DALHelper = new VetecMarfilDO.VetecDALHelper();
+    //    dtActividades = DALHelper.GetTableFromQuery("SELECT intPartidaVivienda, strClave + ' - ' + strNombre AS Actividad FROM tbPartidaVivienda WHERE intEmpresa = 1 and intTipoVivienda = (SELECT intTipoVivienda FROM tbColonia WHERE intColonia = (SELECT intColonia FROM tbObra WHERE intObra = " + obra + ")) AND intPartidaVivienda IN(SELECT DISTINCT intPartidaVivienda FROM tbPUTarjetaArticuloControl where intObra = " + obra + " AND intId in(SELECT intId FROM tbPUAvanceObra WHERE intObra = " + obra + " AND intEstimacion = " + Estimado + " and ISNULL(intEstimado,0) = 1)) ORDER BY CONVERT(int,strClave)");
+    //    DALHelper = null;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelperLote;
+    //    DALHelperLote = new VetecMarfilDO.VetecDALHelper();
+
+    //    dtLotes = DALHelperLote.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek 1,1," + obra + ",0,0,0,0,0,0");
+
+    //    DALHelperLote = null;
+
+    //    Worksheet worksheet = sheets.Add("Estimacion");
+    //    worksheet.Table.Columns.Add(50);
+    //    worksheet.Table.Columns.Add(300);
+
+    //    for (int a = 0; a < dtLotes.Rows.Count; a++)
+    //    {
+    //        worksheet.Table.Columns.Add(20);
+    //    }
+
+    //    for (int i = 0; i < dtActividades.Rows.Count; i++)
+    //    {
+    //        drActividades = dtActividades.Rows[i];
+    //        WorksheetRow worksheetRowAct = worksheet.Table.Rows.Add();
+
+    //        worksheetRowAct.Cells.Add(drActividades["Actividad"].ToString(), DataType.String, "sHeader").MergeAcross = 1;
+
+    //        for (int k = 0; k < dtLotes.Rows.Count; k++)
+    //        {
+    //            drLotes = dtLotes.Rows[k];
+    //            worksheetRowAct.Cells.Add(drLotes["Id"].ToString(), DataType.String, "sHeader");
+    //        }
+
+    //        VetecMarfilDO.VetecDALHelper DALHelper1;
+    //        DALHelper1 = new VetecMarfilDO.VetecDALHelper();
+    //        dtInsumos = DALHelper1.GetTableFromQuery("usp_tbPUAvanceObra_Sel 1,1," + obra + ",0," + drActividades["intPartidaVivienda"].ToString());
+    //        DALHelper1 = null;
+
+    //        for (int j = 0; j < dtInsumos.Rows.Count; j++)
+    //        {
+    //            WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+    //            drInsumos = dtInsumos.Rows[j];
+
+    //            worksheetRowInsumo.Cells.Add(drInsumos["strClave"].ToString(), DataType.String, "sPay");
+    //            worksheetRowInsumo.Cells.Add(drInsumos["strDescripcion"].ToString(), DataType.String, "sPay");
+
+    //            VetecMarfilDO.VetecDALHelper DALHelperEstimado;
+    //            DALHelperEstimado = new VetecMarfilDO.VetecDALHelper();
+                
+    //            dtEstimado = DALHelperEstimado.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek 1,1," + obra + ",0," + Estimado + ",1," + drInsumos["intArticulo"].ToString() + "," + drInsumos["intGrupo"].ToString() + ",0");
+    //            DALHelperEstimado = null;
+
+    //            for (int l = 0; l < dtEstimado.Rows.Count; l++)
+    //            {
+    //                drEstimado = dtEstimado.Rows[l];
+    //                dblImporte = Convert.ToDecimal(drEstimado["strAcomulado"].ToString());
+
+    //                value = dblImporte == 0 ? "" : "x";
+
+    //                worksheetRowInsumo.Cells.Add(value, DataType.String, "sPay");
+    //            }
+    //        }
+    //    }        
+
+    //    worksheet.Options.Selected = true;
+    //    worksheet.Options.FreezePanes = true;
+    //    worksheet.Options.FitToPage = true;
+    //    worksheet.Options.SplitHorizontal = 1;
+    //    worksheet.Options.TopRowBottomPane = 1;
+    //    worksheet.Options.ActivePane = 2;
+    //    worksheet.Options.ProtectObjects = false;
+    //    worksheet.Options.ProtectScenarios = false;
+    //    worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet.Options.Print.PaperSizeIndex = 9;
+    //    worksheet.Options.Print.Scale = 85;
+    //    worksheet.Options.Print.FitHeight = 100;
+    //    worksheet.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    //public void EstimacionesTodo(WorksheetCollection sheets, string obra)
+    //{
+    //    DataTable dtActividades;
+    //    DataTable dtInsumos;
+    //    DataRow drActividades;
+    //    DataRow drInsumos;
+    //    DataTable dtLotes;
+    //    DataRow drLotes;
+    //    DataTable dtEstimado;
+    //    DataRow drEstimado;
+    //    decimal dblImporte = 0;
+    //    string value;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper;
+    //    DALHelper = new VetecMarfilDO.VetecDALHelper();
+    //    dtActividades = DALHelper.GetTableFromQuery("SELECT intPartidaVivienda, strClave + ' - ' + strNombre AS Actividad FROM tbPartidaVivienda WHERE intEmpresa = 1 and intTipoVivienda = (SELECT intTipoVivienda FROM tbColonia WHERE intColonia = (SELECT intColonia FROM tbObra WHERE intObra = " + obra + ")) AND intPartidaVivienda IN(SELECT DISTINCT intPartidaVivienda FROM tbPUTarjetaArticuloControl where intObra = " + obra + " AND intId in(SELECT intId FROM tbPUAvanceObra WHERE intObra = " + obra + " and ISNULL(intEstimado,0) = 1)) ORDER BY CONVERT(int,strClave)");
+    //    DALHelper = null;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelperLote;
+    //    DALHelperLote = new VetecMarfilDO.VetecDALHelper();
+
+    //    dtLotes = DALHelperLote.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek 1,1," + obra + ",0,0,0,0,0,0");
+
+    //    DALHelperLote = null;
+
+    //    Worksheet worksheet = sheets.Add("Estimacion");
+    //    worksheet.Table.Columns.Add(50);
+    //    worksheet.Table.Columns.Add(300);
+
+    //    for (int a = 0; a < dtLotes.Rows.Count; a++)
+    //    {
+    //        worksheet.Table.Columns.Add(20);
+    //    }
+
+    //    for (int i = 0; i < dtActividades.Rows.Count; i++)
+    //    {
+    //        drActividades = dtActividades.Rows[i];
+    //        WorksheetRow worksheetRowAct = worksheet.Table.Rows.Add();
+
+    //        worksheetRowAct.Cells.Add(drActividades["Actividad"].ToString(), DataType.String, "sHeader").MergeAcross = 1;
+
+    //        for (int k = 0; k < dtLotes.Rows.Count; k++)
+    //        {
+    //            drLotes = dtLotes.Rows[k];
+    //            worksheetRowAct.Cells.Add(drLotes["Id"].ToString(), DataType.String, "sHeader");
+    //        }
+
+    //        VetecMarfilDO.VetecDALHelper DALHelper1;
+    //        DALHelper1 = new VetecMarfilDO.VetecDALHelper();
+    //        dtInsumos = DALHelper1.GetTableFromQuery("usp_tbPUAvanceObra_Sel 1,1," + obra + ",0," + drActividades["intPartidaVivienda"].ToString());
+    //        DALHelper1 = null;
+
+    //        for (int j = 0; j < dtInsumos.Rows.Count; j++)
+    //        {
+    //            WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+    //            drInsumos = dtInsumos.Rows[j];
+
+    //            worksheetRowInsumo.Cells.Add(drInsumos["strClave"].ToString(), DataType.String, "sPay");
+    //            worksheetRowInsumo.Cells.Add(drInsumos["strDescripcion"].ToString(), DataType.String, "sPay");
+
+    //            VetecMarfilDO.VetecDALHelper DALHelperEstimado;
+    //            DALHelperEstimado = new VetecMarfilDO.VetecDALHelper();
+
+    //            dtEstimado = DALHelperEstimado.GetTableFromQuery("EXEC usp_tbPUAvanceObra_Estimado 1," + obra + ",1," + drInsumos["intArticulo"].ToString() + "," + drInsumos["intGrupo"].ToString() + ",0");
+    //            DALHelperEstimado = null;
+
+    //            for (int l = 0; l < dtEstimado.Rows.Count; l++)
+    //            {
+    //                drEstimado = dtEstimado.Rows[l];
+    //                dblImporte = Convert.ToDecimal(drEstimado["strAcomulado"].ToString());
+
+    //                value = dblImporte == 0 ? "" : "x";
+
+    //                worksheetRowInsumo.Cells.Add(value, DataType.String, "sPay");
+    //            }
+    //        }
+    //    }
+
+    //    worksheet.Options.Selected = true;
+    //    worksheet.Options.FreezePanes = true;
+    //    worksheet.Options.FitToPage = true;
+    //    worksheet.Options.SplitHorizontal = 1;
+    //    worksheet.Options.TopRowBottomPane = 1;
+    //    worksheet.Options.ActivePane = 2;
+    //    worksheet.Options.ProtectObjects = false;
+    //    worksheet.Options.ProtectScenarios = false;
+    //    worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet.Options.Print.PaperSizeIndex = 9;
+    //    worksheet.Options.Print.Scale = 85;
+    //    worksheet.Options.Print.FitHeight = 100;
+    //    worksheet.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    public void ER(WorksheetCollection sheets, string obras, string strIva, string strIndirectos, string strFactor, string strProteccion)
+    {
+        DataTable dt;              
+        DataRow drInsumos;
+        string fecha = DateTime.Now.ToString();
+        string colonias = Colonias(obras);
+        string sector = Sector(obras);
+        string Numero = Casas(obras);
+        string strObras = Obras(obras);
+
+        Worksheet worksheet = sheets.Add("Analisis");
+        worksheet.Table.Columns.Add(50);//tipo
+        worksheet.Table.Columns.Add(50);//grupo
+        worksheet.Table.Columns.Add(70);//insumo
+        worksheet.Table.Columns.Add(100);//desc_tipo
+        worksheet.Table.Columns.Add(100);//desc_grupo
+        worksheet.Table.Columns.Add(200);//descripcion        				
+        worksheet.Table.Columns.Add(50);//unidad
+        worksheet.Table.Columns.Add(70);//precio_ek
+
+        worksheet.Table.Columns.Add(70);//Cantidad
+        worksheet.Table.Columns.Add(70);//Ctd/Casa
+        worksheet.Table.Columns.Add(70);//Importe
+
+        worksheet.Table.Columns.Add(70);//Cantidad
+        worksheet.Table.Columns.Add(70);//Ctd/Casa
+        worksheet.Table.Columns.Add(70);//Importe
+
+        worksheet.Table.Columns.Add(70);//Cantidad
+        worksheet.Table.Columns.Add(70);//Ctd/Casa
+        worksheet.Table.Columns.Add(70);//Importe
+
+        worksheet.Table.Columns.Add(70);//% Dif
+        worksheet.Table.Columns.Add(70);//IVA e Ind Marfil
+
+        worksheet.Table.Columns.Add(70);//Importe Real
+        worksheet.Table.Columns.Add(70);//Ajuste
+        worksheet.Table.Columns.Add(70);//Ajuste
+
+       WorksheetRow worksheetBlank1 = worksheet.Table.Rows.Add();
+
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("Colonia", DataType.String, "Default");
+       worksheetBlank1.Cells.Add(colonias, DataType.String, "Default").MergeAcross = 1;
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("Obras:", DataType.String, "Default");
+       worksheetBlank1.Cells.Add(strObras, DataType.String, "Default").MergeAcross = 6;
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+       worksheetBlank1.Cells.Add("", DataType.String, "Default");
+
+       WorksheetRow worksheetBlankCol = worksheet.Table.Rows.Add();
+
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("Sector", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add(sector, DataType.String, "Default").MergeAcross = 1;
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("Numero de casas:", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add(Numero, DataType.String, "Default").MergeAcross = 6;
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+       worksheetBlankCol.Cells.Add("", DataType.String, "Default");
+
+       WorksheetRow worksheetBlankFec = worksheet.Table.Rows.Add();
+
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("Fecha:", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add(fecha, DataType.String, "Default").MergeAcross = 1;
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default").MergeAcross = 6;
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+       worksheetBlankFec.Cells.Add("", DataType.String, "Default");
+
+       WorksheetRow worksheetBlank2 = worksheet.Table.Rows.Add();
+
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+       worksheetBlank2.Cells.Add("", DataType.String, "Default");
+
+       WorksheetRow worksheetBlank = worksheet.Table.Rows.Add();
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("PRESUPUESTO", DataType.String, "sHeader2").MergeAcross = 3;
+       worksheetBlank.Cells.Add("COMPRADO REAL", DataType.String, "sHeader2").MergeAcross = 3;
+       worksheetBlank.Cells.Add("DIFERENCIA", DataType.String, "sHeader2").MergeAcross = 2;
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       worksheetBlank.Cells.Add("", DataType.String, "Default");
+       //worksheetBlank.Cells.Add("REAL COMPRADO", DataType.String, "sHeader2").MergeAcross = 1 ;
+       //worksheetBlank.Cells.Add("AJUSTE", DataType.String, "sHeader2").MergeAcross = 1;
+
+       WorksheetRow worksheetHead = worksheet.Table.Rows.Add();
+        worksheetHead.Cells.Add("tipo", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("grupo", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Clave Insumo", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Familia", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Grupo", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Insumo", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Unidad", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Precio Base", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Cantidad", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Aditiva", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Ctd/Casa", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Importe", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Precio Promedio Compra", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Cantidad", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Ctd/Casa", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Importe", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Cantidad", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Ctd/Casa", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("Importe", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("% Dif", DataType.String, "sHeader");
+        worksheetHead.Cells.Add("IVA e Ind Marfil", DataType.String, "sHeader");
+        //worksheetHead.Cells.Add("Importe", DataType.String, "sHeader");
+        //worksheetHead.Cells.Add("Importe Uni. Med.", DataType.String, "sHeader");
+        //worksheetHead.Cells.Add("Cantidad", DataType.String, "sHeader");
+        //worksheetHead.Cells.Add("Importe", DataType.String, "sHeader");
+
+        Obra objCO = new Obra();
+        dt = objCO.GetTableControlObra(obras, strIva, strIndirectos, strFactor, strProteccion);
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+            drInsumos = dt.Rows[i];
+
+            worksheetRowInsumo.Cells.Add(drInsumos["tipo"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["grupo"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["insumo"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["desc_tipo"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["desc_grupo"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["descripcion"].ToString(), DataType.String, "StyleText");
+            worksheetRowInsumo.Cells.Add(drInsumos["unidad"].ToString(), DataType.String, "StyleText");
+
+            if (drInsumos["precio"].ToString() == "" || drInsumos["precio"].ToString() == "0")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["precio"].ToString(), DataType.Number, "StyleMoney");
+
+            if(drInsumos["cantidad_presupuesto"].ToString() == "")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["cantidad_presupuesto"].ToString(), DataType.Number, "StyleCant");
+
+            if (drInsumos["Aditiva"].ToString() == "")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["Aditiva"].ToString(), DataType.Number, "StyleCant");
+
+            if (drInsumos["ctd_casa_presupuesto"].ToString() == "")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["ctd_casa_presupuesto"].ToString(), DataType.Number, "StyleCant");
+
+            if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["importe_presupuesto"].ToString() != "")
+                if (Convert.ToDecimal(drInsumos["importe_presupuesto"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_presupuesto"].ToString(), DataType.Number, "styleTotalN");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_presupuesto"].ToString(), DataType.Number, "styleTotal");
+            else
+            {
+                if (drInsumos["importe_presupuesto"].ToString() == "")
+                    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_presupuesto"].ToString(), DataType.Number, "StyleMoney");
+            }
+
+            if (drInsumos["precio_compra"].ToString() == "" || drInsumos["precio_compra"].ToString() == "0")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["precio_compra"].ToString(), DataType.Number, "StyleMoney");
+
+            if (drInsumos["cantidad_comprada"].ToString() == "")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["cantidad_comprada"].ToString(), DataType.Number, "StyleCant");
+
+            if (drInsumos["ctd_casa_comprado"].ToString() == "")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["ctd_casa_comprado"].ToString(), DataType.Number, "StyleCant");
+
+            if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["importe_comprado"].ToString() != "")
+                if (Convert.ToDecimal(drInsumos["importe_comprado"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_comprado"].ToString(), DataType.Number, "styleTotalN");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_comprado"].ToString(), DataType.Number, "styleTotal");
+            else
+            {
+                if (drInsumos["importe_presupuesto"].ToString() == "")
+                    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_comprado"].ToString(), DataType.Number, "StyleMoney");
+            }
+
+            if (drInsumos["cantidad_diferencia"].ToString() != "")
+            {
+                if (Convert.ToDecimal(drInsumos["cantidad_diferencia"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["cantidad_diferencia"].ToString(), DataType.Number, "StyleCantN");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["cantidad_diferencia"].ToString(), DataType.Number, "StyleCant");
+            }
+            else
+            {
+                if (drInsumos["cantidad_diferencia"].ToString() == "")
+                    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["cantidad_diferencia"].ToString(), DataType.Number, "StyleMoney");
+            }
+
+            if (drInsumos["ctd_casa_diferencia"].ToString() != "")
+            {
+                if (Convert.ToDecimal(drInsumos["ctd_casa_diferencia"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["ctd_casa_diferencia"].ToString(), DataType.Number, "StyleCantN");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["ctd_casa_diferencia"].ToString(), DataType.Number, "StyleCant");
+            }
+            else
+            {
+                if (drInsumos["ctd_casa_diferencia"].ToString() == "")
+                    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                else
+                    worksheetRowInsumo.Cells.Add(drInsumos["ctd_casa_diferencia"].ToString(), DataType.Number, "StyleMoney");
+            }
+           
+            if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["importe_diferencia"].ToString() != "")
+                 if(Convert.ToDecimal(drInsumos["importe_diferencia"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["importe_diferencia"].ToString(), DataType.Number, "styleTotalN");
+                else   
+                 {
+                      if (drInsumos["importe_diferencia"].ToString() == "")
+                            worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                        else
+                            worksheetRowInsumo.Cells.Add(drInsumos["importe_diferencia"].ToString(), DataType.Number, "styleTotal");
+                 }                    
+            else
+            {
+                if (drInsumos["importe_diferencia"].ToString() != "")
+                {
+                    if (Convert.ToDecimal(drInsumos["importe_diferencia"].ToString()) < 0)
+                        worksheetRowInsumo.Cells.Add(drInsumos["importe_diferencia"].ToString(), DataType.Number, "StyleCantN");
+                    else
+                    {
+                        if (drInsumos["importe_diferencia"].ToString() == "")
+                            worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                        else
+                            worksheetRowInsumo.Cells.Add(drInsumos["importe_diferencia"].ToString(), DataType.Number, "StyleMoney");
+                    }
+                }
+                else
+                {
+                    if (drInsumos["importe_diferencia"].ToString() == "")
+                        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                    else
+                        worksheetRowInsumo.Cells.Add(drInsumos["importe_diferencia"].ToString(), DataType.Number, "styleTotal");
+                }
+            }
+
+            if (drInsumos["Dif"].ToString() == "" || drInsumos["Dif"].ToString() == "0")
+                worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            else
+                worksheetRowInsumo.Cells.Add(drInsumos["Dif"].ToString(), DataType.String, "StyleCant");
+
+
+            if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["DifXCasa"].ToString() != "")
+                if (Convert.ToDecimal(drInsumos["DifXCasa"].ToString()) < 0)
+                    worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "styleTotalN");
+                else
+                {
+                    if (drInsumos["DifXCasa"].ToString() == "")
+                        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                    else
+                        worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "styleTotal");
+                }
+            else
+            {
+                if (drInsumos["DifXCasa"].ToString() != "")
+                {
+                    if (Convert.ToDecimal(drInsumos["DifXCasa"].ToString()) < 0)
+                        worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "StyleCantN");
+                    else
+                    {
+                        if (drInsumos["DifXCasa"].ToString() == "")
+                            worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                        else
+                            worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "StyleMoney");
+                    }
+                }
+                else
+                {
+                    if (drInsumos["DifXCasa"].ToString() == "")
+                        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+                    else
+                        worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "styleTotal");
+                }
+            }
+
+            //if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["dblImporteReal"].ToString() != "")
+            //    if (Convert.ToDecimal(drInsumos["dblImporteReal"].ToString()) < 0)
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblImporteReal"].ToString(), DataType.Number, "styleTotalN");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblImporteReal"].ToString(), DataType.Number, "styleTotal");
+            //else
+            //{
+            //    if (drInsumos["dblImporteReal"].ToString() == "")
+            //        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblImporteReal"].ToString(), DataType.Number, "StyleCant");
+            //}
+
+            //if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["dblPUReal"].ToString() != "")
+            //    if (Convert.ToDecimal(drInsumos["dblPUReal"].ToString()) < 0)
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblPUReal"].ToString(), DataType.Number, "styleTotalN");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblPUReal"].ToString(), DataType.Number, "styleTotal");
+            //else
+            //{
+            //    if (drInsumos["dblPUReal"].ToString() == "")
+            //        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["dblPUReal"].ToString(), DataType.Number, "StyleCant");
+            //}
+
+            //if (drInsumos["insumo"].ToString() == "")
+            //    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            //else
+            //    worksheetRowInsumo.Cells.Add(drInsumos["Ajuste"].ToString(), DataType.Number, "StyleCant");
+
+            //if (drInsumos["desc_tipo"].ToString() == "" && drInsumos["importe_presupuesto"].ToString() != "")
+            //    if (Convert.ToDecimal(drInsumos["ImporteAjuste"].ToString()) < 0)
+            //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteAjuste"].ToString(), DataType.Number, "styleTotalN");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteAjuste"].ToString(), DataType.Number, "styleTotal");
+            //else
+            //{
+            //    if (drInsumos["insumo"].ToString() == "")
+            //        worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            //    else
+            //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteAjuste"].ToString(), DataType.Number, "StyleCant");
+            //}
+
+            //if (drInsumos["insumo"].ToString() == "")
+            //    worksheetRowInsumo.Cells.Add("", DataType.String, "StyleCant");
+            //else
+            //    worksheetRowInsumo.Cells.Add(drInsumos["ImporteAjuste"].ToString(), DataType.Number, "StyleCant");
+        }
+        
+        worksheet.Options.Selected = true;
+        worksheet.Options.FreezePanes = true;
+        worksheet.Options.FitToPage = true;
+        worksheet.Options.SplitHorizontal = 1;
+        worksheet.Options.TopRowBottomPane = 1;
+        worksheet.Options.ActivePane = 2;
+        worksheet.Options.ProtectObjects = false;
+        worksheet.Options.ProtectScenarios = false;
+        worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet.Options.Print.PaperSizeIndex = 9;
+        worksheet.Options.Print.Scale = 85;
+        worksheet.Options.Print.FitHeight = 100;
+        worksheet.Options.Print.ValidPrinterInfo = true;
+
+        Worksheet worksheet2 = sheets.Add("Precios");
+
+        dt = objCO.GetTableControlObraPrecios(obras);
+
+        worksheet2.Table.Columns.Add(1);
+        worksheet2.Table.Columns.Add(50);
+        worksheet2.Table.Columns.Add(300);
+        for (int a = 3; a < dt.Columns.Count; a++)
+        {
+           worksheet2.Table.Columns.Add(100);          
+        }
+
+        WorksheetRow worksheetPrecios = worksheet2.Table.Rows.Add();
+        for (int b = 0; b < dt.Columns.Count; b++)
+        {
+            worksheetPrecios.Cells.Add(dt.Columns[b].ColumnName, DataType.String, "sHeader2");
+        }
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            WorksheetRow worksheetPrecios2 = worksheet2.Table.Rows.Add();
+            drInsumos = dt.Rows[i];
+
+            for (int c = 0; c < dt.Columns.Count; c++)
+            {
+                if(dt.Columns[c].ColumnName.Contains("Precio"))
+                    worksheetPrecios2.Cells.Add(drInsumos[dt.Columns[c].ColumnName].ToString(), DataType.Number, "StyleMoney");
+                else
+                    worksheetPrecios2.Cells.Add(drInsumos[dt.Columns[c].ColumnName].ToString(), DataType.String, "StyleText");
+            }         
+        }
+
+        worksheet2.Options.FreezePanes = true;
+        worksheet2.Options.FitToPage = true;
+        worksheet2.Options.SplitHorizontal = 1;
+        worksheet2.Options.TopRowBottomPane = 1;
+        worksheet2.Options.ActivePane = 2;
+        worksheet2.Options.ProtectObjects = false;
+        worksheet2.Options.ProtectScenarios = false;
+        worksheet2.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet2.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet2.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet2.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet2.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet2.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet2.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet2.Options.Print.PaperSizeIndex = 9;
+        worksheet2.Options.Print.Scale = 85;
+        worksheet2.Options.Print.FitHeight = 100;
+        worksheet2.Options.Print.ValidPrinterInfo = true;       
+    }
+
+    private string Colonias(string strObras)
+    {
+        //strObras = strObras.Substring(0, strObras.LastIndexOf(","));
+
+        string value = "";
+        Colonia objColonia = new Colonia();
+        value = objColonia.GetColonias(strObras);
+        return value;
+    }
+
+    private string Sector(string strObras)
+    {
+        //strObras = strObras.Substring(0, strObras.LastIndexOf(","));
+        string value = "";
+        //VetecMarfilDO.VetecDALHelper DALHelper;
+        //DALHelper = new VetecMarfilDO.VetecDALHelper();
+        Sector objSector = new Sector();
+        value = objSector.GetSectores(strObras);
+        return value;
+    }
+
+    private string Casas(string strObras)
+    {
+        //strObras = strObras.Substring(0, strObras.LastIndexOf(","));
+        string value = "";
+        //VetecMarfilDO.VetecDALHelper DALHelper;
+        //DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+        Colonia objCasa = new Colonia();
+        value = objCasa.GetCasas(strObras);
+        //value = DALHelper.ExecuteScalarFromQuery("SELECT SUM(dblFactor) FROM tbPUfrente WHERE intObra in(" + strObras + ") AND bCasa = 1").ToString();
+
+        //DALHelper = null;
+        return value;
+    }
+
+    private string Obras(string strObras)
+    {
+        //strObras = strObras.Substring(0, strObras.LastIndexOf(",")); lo comento porque yo ya mando las obras sin una coma al final, y esto me esta quitando la ultima obra
+        DataTable dt;
+        DataRow dr;
+        string value = "";
+        //VetecMarfilDO.VetecDALHelper DALHelper;
+        //DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+        Obra objobra = new Obra();
+        dt = objobra.GetObrasExcel(strObras);
+        // dt = DALHelper.GetTableFromQuery("SELECT strClave FROM tbObra WHERE intObra in(" + strObras + ") ORDER BY strClave");
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            dr = dt.Rows[i];
+            if (i == dt.Rows.Count - 1)
+                value = value + dr["strClave"].ToString();
+            else
+                value = value + dr["strClave"].ToString() + ", ";
+        }
+
+        //DALHelper = null;
+        return value;
+    }
+
+    //public void CantidadFrente(WorksheetCollection sheets, string intObra,string strFrente,string strFrenteFin,string strPartida,string strPartidaFin,string strInsumo,string strInsumoFin,string strCantidad)
+    //{
+    //    DataTable dt;
+    //    DataRow drInsumos;
+       
+    //    Worksheet worksheet2 = sheets.Add("CantidadFrente");
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper2;
+    //    DALHelper2 = new VetecMarfilDO.VetecDALHelper();
+
+    //    dt = DALHelper2.GetTableFromQuery("EXEC usp_tbObra_FrenteDin " + intObra + ","+ strCantidad +"," + strFrente + "," + strFrenteFin + "," + strPartida + "," + strPartidaFin + "," + strInsumo + "," + strInsumoFin);
+
+    //    DALHelper2 = null;
+
+    //    worksheet2.Table.Columns.Add(1);
+    //    worksheet2.Table.Columns.Add(1);
+    //    worksheet2.Table.Columns.Add(70);
+    //    worksheet2.Table.Columns.Add(250);
+    //    worksheet2.Table.Columns.Add(70);
+    //    worksheet2.Table.Columns.Add(100);
+
+    //    for (int a = 8; a < dt.Columns.Count; a++)
+    //    {
+    //        worksheet2.Table.Columns.Add(100);
+    //    }
+
+    //    WorksheetRow worksheetPrecios = worksheet2.Table.Rows.Add();
+    //    for (int b = 0; b < dt.Columns.Count; b++)
+    //    {
+    //        worksheetPrecios.Cells.Add(dt.Columns[b].ColumnName, DataType.String, "sHeader2");
+    //    }
+
+    //    string style = strCantidad == "1" ? "StyleCant" : "StyleMoney";
+
+    //    for (int i = 0; i < dt.Rows.Count; i++)
+    //    {
+    //        WorksheetRow worksheetPrecios2 = worksheet2.Table.Rows.Add();
+    //        drInsumos = dt.Rows[i];
+
+    //        for (int c = 0; c < dt.Columns.Count; c++)
+    //        {
+    //            if (dt.Columns[c].ColumnName.Contains("Precio") || dt.Columns[c].ColumnName.Contains("Frente"))
+    //                worksheetPrecios2.Cells.Add(drInsumos[dt.Columns[c].ColumnName].ToString(), DataType.Number, style);
+    //            else
+    //                worksheetPrecios2.Cells.Add(drInsumos[dt.Columns[c].ColumnName].ToString(), DataType.String, "StyleText");
+    //        }
+    //    }
+
+    //    worksheet2.Options.FreezePanes = true;
+    //    worksheet2.Options.FitToPage = true;
+    //    worksheet2.Options.SplitHorizontal = 1;
+    //    worksheet2.Options.TopRowBottomPane = 1;
+    //    worksheet2.Options.ActivePane = 2;
+    //    worksheet2.Options.ProtectObjects = false;
+    //    worksheet2.Options.ProtectScenarios = false;
+    //    worksheet2.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet2.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet2.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet2.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet2.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet2.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet2.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet2.Options.Print.PaperSizeIndex = 9;
+    //    worksheet2.Options.Print.Scale = 85;
+    //    worksheet2.Options.Print.FitHeight = 100;
+    //    worksheet2.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    //public void ConceptosPendientes(WorksheetCollection sheets, string obra)
+    //{        
+    //    DataTable dtInsumos;
+    //    DataRow drInsumos;
+    //    DataTable dtLotes;
+    //    DataRow drLotes;
+    //    DataTable dtEstimado;
+    //    DataRow drEstimado;
+    //    decimal dblImporte = 0;
+    //    string value;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper;
+    //    DALHelper = new VetecMarfilDO.VetecDALHelper();
+    //    DALHelper = null;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelperLote;
+    //    DALHelperLote = new VetecMarfilDO.VetecDALHelper();
+
+    //    dtLotes = DALHelperLote.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Lotes_XLS " + obra);
+
+    //    DALHelperLote = null;
+
+    //    Worksheet worksheet = sheets.Add("Conceptos Pendientes");
+    //    worksheet.Table.Columns.Add(50);
+    //    worksheet.Table.Columns.Add(300);
+
+    //    for (int a = 0; a < dtLotes.Rows.Count; a++)
+    //    {
+    //        worksheet.Table.Columns.Add(50);
+    //    }
+
+    //    WorksheetRow worksheetRowLote = worksheet.Table.Rows.Add();
+
+    //    worksheetRowLote.Cells.Add("Clave", DataType.String, "sHeader");
+    //    worksheetRowLote.Cells.Add("Descripción", DataType.String, "sHeader");
+
+    //    for (int k = 0; k < dtLotes.Rows.Count; k++)
+    //    {
+    //        drLotes = dtLotes.Rows[k];
+    //        worksheetRowLote.Cells.Add(drLotes["Id"].ToString(), DataType.String, "sHeader");
+    //    }         
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper1;
+    //    DALHelper1 = new VetecMarfilDO.VetecDALHelper();
+    //    dtInsumos = DALHelper1.GetTableFromQuery("usp_CptoPorPagar_Rpt " + obra);
+    //    DALHelper1 = null;
+
+    //    for (int j = 0; j < dtInsumos.Rows.Count; j++)
+    //    {
+    //        WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+    //        drInsumos = dtInsumos.Rows[j];
+
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Articulo"].ToString(), DataType.String, "sPay");
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Nombre"].ToString(), DataType.String, "sPay");
+
+    //        VetecMarfilDO.VetecDALHelper DALHelperEstimado;
+    //        DALHelperEstimado = new VetecMarfilDO.VetecDALHelper();
+            
+    //        dtEstimado = DALHelperEstimado.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Lotes_XLS " + obra + "," + drInsumos["intArticulo"].ToString() + ",0");
+    //        DALHelperEstimado = null;
+
+    //        for (int l = 0; l < dtEstimado.Rows.Count; l++)
+    //        {
+    //            drEstimado = dtEstimado.Rows[l];
+
+    //            if (drEstimado["Importe"].ToString() == "")
+    //                worksheetRowInsumo.Cells.Add("", DataType.String, "sPay");
+    //            else
+    //            {
+    //                dblImporte = Convert.ToDecimal(drEstimado["Importe"].ToString());
+    //                worksheetRowInsumo.Cells.Add(dblImporte.ToString("C2"), DataType.String, "sPay");
+    //            }
+                
+    //        }
+    //    }
+        
+
+    //    worksheet.Options.Selected = true;
+    //    worksheet.Options.FreezePanes = true;
+    //    worksheet.Options.FitToPage = true;
+    //    worksheet.Options.SplitHorizontal = 1;
+    //    worksheet.Options.TopRowBottomPane = 1;
+    //    worksheet.Options.ActivePane = 2;
+    //    worksheet.Options.ProtectObjects = false;
+    //    worksheet.Options.ProtectScenarios = false;
+    //    worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet.Options.Print.PaperSizeIndex = 9;
+    //    worksheet.Options.Print.Scale = 85;
+    //    worksheet.Options.Print.FitHeight = 100;
+    //    worksheet.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    //public void Estimado(WorksheetCollection sheets, string obra, string intEstimacion)
+    //{
+    //    DataTable dtInsumos;
+    //    DataRow drInsumos;
+    //    DataTable dtLotes;
+    //    DataRow drLotes;
+    //    DataTable dtEstimado;
+    //    DataRow drEstimado;
+    //    decimal dblImporte = 0;
+    //    string value;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper;
+    //    DALHelper = new VetecMarfilDO.VetecDALHelper();
+    //    DALHelper = null;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelperLote;
+    //    DALHelperLote = new VetecMarfilDO.VetecDALHelper();
+
+    //    dtLotes = DALHelperLote.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Lotes_XLS " + obra);
+
+    //    DALHelperLote = null;
+
+    //    Worksheet worksheet = sheets.Add("Estimacion");
+    //    worksheet.Table.Columns.Add(50);
+    //    worksheet.Table.Columns.Add(300);
+
+    //    for (int a = 0; a < dtLotes.Rows.Count; a++)
+    //    {
+    //        worksheet.Table.Columns.Add(50);
+    //    }
+
+    //    WorksheetRow worksheetRowLote = worksheet.Table.Rows.Add();
+
+    //    worksheetRowLote.Cells.Add("Clave", DataType.String, "sHeader");
+    //    worksheetRowLote.Cells.Add("Descripción", DataType.String, "sHeader");
+
+    //    for (int k = 0; k < dtLotes.Rows.Count; k++)
+    //    {
+    //        drLotes = dtLotes.Rows[k];
+    //        worksheetRowLote.Cells.Add(drLotes["Id"].ToString(), DataType.String, "sHeader");
+    //    }
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper1;
+    //    DALHelper1 = new VetecMarfilDO.VetecDALHelper();
+    //    dtInsumos = DALHelper1.GetTableFromQuery("usp_CptoPagados_Rpt " + obra + "," + intEstimacion);
+    //    DALHelper1 = null;
+
+    //    for (int j = 0; j < dtInsumos.Rows.Count; j++)
+    //    {
+    //        WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+    //        drInsumos = dtInsumos.Rows[j];
+
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Articulo"].ToString(), DataType.String, "sPay");
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Nombre"].ToString(), DataType.String, "sPay");
+           
+    //        for (int l = 0; l < dtLotes.Rows.Count; l++)
+    //        {
+    //            drLotes = dtLotes.Rows[l];
+
+    //            VetecMarfilDO.VetecDALHelper DALHelperEstimado;
+    //            DALHelperEstimado = new VetecMarfilDO.VetecDALHelper();
+
+    //            value = DALHelperEstimado.ExecuteScalarFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Importe " + obra + "," + drLotes["intLote"].ToString() + "," + drInsumos["intArticulo"].ToString() + "," + intEstimacion).ToString();
+
+    //            if (value.ToString() == "-1.0000")
+    //                worksheetRowInsumo.Cells.Add("", DataType.String, "sPay");
+    //            else
+    //            {
+    //                dblImporte = Convert.ToDecimal(value.ToString());
+    //                if (Convert.ToDecimal(value) < -1)
+    //                    worksheetRowInsumo.Cells.Add(dblImporte.ToString("C2").Replace("-",""), DataType.String, "sPayRed");
+    //                else                                           
+    //                    worksheetRowInsumo.Cells.Add(dblImporte.ToString("C2"), DataType.String, "sPay");
+                    
+    //            }
+
+    //            DALHelperEstimado = null;
+    //            drLotes = null;
+    //        }                     
+    //    }
+
+    //    worksheet.Options.Selected = true;
+    //    worksheet.Options.FreezePanes = true;
+    //    worksheet.Options.FitToPage = true;
+    //    worksheet.Options.SplitHorizontal = 1;
+    //    worksheet.Options.TopRowBottomPane = 1;
+    //    worksheet.Options.ActivePane = 2;
+    //    worksheet.Options.ProtectObjects = false;
+    //    worksheet.Options.ProtectScenarios = false;
+    //    worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet.Options.Print.PaperSizeIndex = 9;
+    //    worksheet.Options.Print.Scale = 85;
+    //    worksheet.Options.Print.FitHeight = 100;
+    //    worksheet.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    //public void Auditoria(WorksheetCollection sheets, string obra, string intEstimacion)
+    //{
+    //    DataTable dtInsumos;
+    //    DataRow drInsumos;
+    //    DataTable dtLotes;
+    //    DataRow drLotes;
+    //    DataTable dtEstimado;
+    //    DataRow drEstimado;
+    //    decimal dblImporte = 0;
+    //    string value;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper;
+    //    DALHelper = new VetecMarfilDO.VetecDALHelper();
+    //    DALHelper = null;
+
+    //    VetecMarfilDO.VetecDALHelper DALHelperLote;
+    //    DALHelperLote = new VetecMarfilDO.VetecDALHelper();
+
+    //    dtLotes = DALHelperLote.GetTableFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Lotes_XLS " + obra);
+
+    //    DALHelperLote = null;
+
+    //    Worksheet worksheet = sheets.Add("Estimacion");
+    //    worksheet.Table.Columns.Add(50);
+    //    worksheet.Table.Columns.Add(300);
+
+    //    for (int a = 0; a < dtLotes.Rows.Count; a++)
+    //    {
+    //        worksheet.Table.Columns.Add(70);
+    //    }
+
+    //    WorksheetRow worksheetRowLote = worksheet.Table.Rows.Add();
+
+    //    worksheetRowLote.Cells.Add("Clave", DataType.String, "sHeader");
+    //    worksheetRowLote.Cells.Add("Descripción", DataType.String, "sHeader");
+
+    //    for (int k = 0; k < dtLotes.Rows.Count; k++)
+    //    {
+    //        drLotes = dtLotes.Rows[k];
+    //        worksheetRowLote.Cells.Add(drLotes["Id"].ToString(), DataType.String, "sHeader");
+    //    }
+
+    //    VetecMarfilDO.VetecDALHelper DALHelper1;
+    //    DALHelper1 = new VetecMarfilDO.VetecDALHelper();
+    //    dtInsumos = DALHelper1.GetTableFromQuery("usp_CptoPagados_Rpt " + obra + "," + intEstimacion);
+    //    DALHelper1 = null;
+
+    //    for (int j = 0; j < dtInsumos.Rows.Count; j++)
+    //    {
+    //        WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+    //        drInsumos = dtInsumos.Rows[j];
+
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Articulo"].ToString(), DataType.String, "sPay");
+    //        worksheetRowInsumo.Cells.Add(drInsumos["Nombre"].ToString(), DataType.String, "sPay");
+
+    //        for (int l = 0; l < dtLotes.Rows.Count; l++)
+    //        {
+    //            drLotes = dtLotes.Rows[l];
+
+    //            VetecMarfilDO.VetecDALHelper DALHelperEstimado;
+    //            DALHelperEstimado = new VetecMarfilDO.VetecDALHelper();
+
+    //            value = DALHelperEstimado.ExecuteScalarFromQuery("EXEC usp_tbPUAvanceObra_SelWeek_Auditoria " + obra + "," + drLotes["intLote"].ToString() + "," + drInsumos["intArticulo"].ToString() + "," + intEstimacion + ",0").ToString();
+
+    //            if (value.ToString() == "-1")
+    //                worksheetRowInsumo.Cells.Add("", DataType.String, "sPay");
+    //            else
+    //                worksheetRowInsumo.Cells.Add(value, DataType.String, "sPay");
+
+    //            if(l == dtLotes.Rows.Count - 1)
+    //                worksheetRowInsumo.Cells.Add("", DataType.String, "sPay");
+                
+    //            DALHelperEstimado = null;
+    //            drLotes = null;
+    //        }
+    //    }
+
+    //    worksheet.Options.Selected = true;
+    //    worksheet.Options.FreezePanes = true;
+    //    worksheet.Options.FitToPage = true;
+    //    worksheet.Options.SplitHorizontal = 1;
+    //    worksheet.Options.TopRowBottomPane = 1;
+    //    worksheet.Options.ActivePane = 2;
+    //    worksheet.Options.ProtectObjects = false;
+    //    worksheet.Options.ProtectScenarios = false;
+    //    worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+    //    worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+    //    worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+    //    worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+    //    worksheet.Options.Print.PaperSizeIndex = 9;
+    //    worksheet.Options.Print.Scale = 85;
+    //    worksheet.Options.Print.FitHeight = 100;
+    //    worksheet.Options.Print.ValidPrinterInfo = true;
+    //}
+
+    private void Styles(WorksheetStyleCollection styles)
+    {
+        WorksheetStyle worksheetStyle1 = styles.Add("Default");
+        worksheetStyle1.Name = "Normal";
+        worksheetStyle1.Alignment.Vertical = StyleVerticalAlignment.Bottom;
+
+
+        WorksheetStyle worksheetStyle2 = styles.Add("sHeader");
+        worksheetStyle2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 1, "Gray");
+        worksheetStyle2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1, "Gray");
+        worksheetStyle2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1, "Gray");
+        worksheetStyle2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 1, "Gray");
+        worksheetStyle2.Font.Color = "White";
+        worksheetStyle2.Interior.Color = "Navy";
+        worksheetStyle2.Interior.Pattern = StyleInteriorPattern.Solid;
+        worksheetStyle2.Font.Size = 10;
+        worksheetStyle2.Font.FontName = "Arial";
+        worksheetStyle2.Font.Bold = true;
+        worksheetStyle2.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+
+        WorksheetStyle sHeader2 = styles.Add("sHeader2");
+        sHeader2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 1, "Gray");
+        sHeader2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1, "Gray");
+        sHeader2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1, "Gray");
+        sHeader2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 1, "Gray");
+        sHeader2.Font.Color = "White";
+        sHeader2.Interior.Color = "Navy";
+        sHeader2.Interior.Pattern = StyleInteriorPattern.Solid;
+        sHeader2.Font.Size = 10;
+        sHeader2.Font.FontName = "Arial";
+        sHeader2.Font.Bold = true;
+        sHeader2.Alignment.Horizontal = StyleHorizontalAlignment.Center;
+
+
+        WorksheetStyle worksheetStyle3 = styles.Add("s01");
+        worksheetStyle3.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        worksheetStyle3.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 1, "#A3C0E8");
+        worksheetStyle3.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1, "#A3C0E8");
+        worksheetStyle3.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1, "#A3C0E8");
+        worksheetStyle3.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 1, "#A3C0E8");
+        WorksheetStyle s02 = styles.Add("s02");
+        s02.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        s02.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 1, "#A3C0E8");
+        s02.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1, "#A3C0E8");
+        s02.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1, "#A3C0E8");
+        s02.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 1, "#A3C0E8");
+        WorksheetStyle worksheetStyle4 = styles.Add("sPosotion");
+        worksheetStyle4.Font.Bold = true;
+        worksheetStyle4.Interior.Color = "#A3C0E8";
+        worksheetStyle4.Interior.Pattern = StyleInteriorPattern.Solid;
+        worksheetStyle4.Font.Size = 8;
+        worksheetStyle4.Font.Color = "Black";
+        worksheetStyle4.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        worksheetStyle4.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        worksheetStyle4.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyle4.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyle4.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        WorksheetStyle worksheetStyle5 = styles.Add("sPosotionNumber");
+        worksheetStyle5.Font.Bold = true;
+        worksheetStyle5.Interior.Color = "#FF99FF";
+        worksheetStyle5.Font.Size = 8;
+        worksheetStyle5.Font.Color = "Black";
+        worksheetStyle5.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        worksheetStyle5.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#EE7621";
+        worksheetStyle5.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#EE7621";
+        worksheetStyle5.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#EE7621";
+        worksheetStyle5.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#EE7621";
+
+        WorksheetStyle worksheetStyle6 = styles.Add("sPay");
+        worksheetStyle6.Font.Bold = true;
+        //worksheetStyle6.Interior.Color = "Silver";
+        worksheetStyle6.Interior.Pattern = StyleInteriorPattern.Solid;
+        worksheetStyle6.Font.Size = 8;
+        worksheetStyle6.Font.Color = "Black";
+        worksheetStyle6.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        worksheetStyle6.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        worksheetStyle6.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyle6.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyle6.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        worksheetStyle6.NumberFormat = "#,#";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        //worksheetStyle6.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle worksheetStyleR = styles.Add("sPayRed");
+        worksheetStyleR.Font.Bold = true;
+        //worksheetStyle6.Interior.Color = "Silver";
+        worksheetStyleR.Interior.Pattern = StyleInteriorPattern.Solid;
+        worksheetStyleR.Font.Size = 8;
+        worksheetStyleR.Font.Color = "Red";
+        worksheetStyleR.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        worksheetStyleR.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        worksheetStyleR.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyleR.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        worksheetStyleR.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        worksheetStyleR.NumberFormat = "#,#";
+
+        WorksheetStyle styleTotal = styles.Add("styleTotal");
+        styleTotal.Font.Bold = true;
+        styleTotal.Interior.Color = "Silver";
+        styleTotal.Interior.Pattern = StyleInteriorPattern.Solid;
+        styleTotal.Font.Size = 8;
+        styleTotal.Font.Color = "Black";
+        styleTotal.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        styleTotal.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal.NumberFormat = "$#,##0.00";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        styleTotal.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle styleTotal2 = styles.Add("styleTotal2");
+        styleTotal2.Font.Bold = true;
+        styleTotal2.Interior.Color = "Silver";
+        styleTotal2.Interior.Pattern = StyleInteriorPattern.Solid;
+        styleTotal2.Font.Size = 8;
+        styleTotal2.Font.Color = "Black";
+        styleTotal2.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        styleTotal2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal2.NumberFormat = "$#,##0.00";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        styleTotal2.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle styleTotal2Can = styles.Add("styleTotal2Can");
+        styleTotal2Can.Font.Bold = true;
+        styleTotal2Can.Interior.Color = "Silver";
+        styleTotal2Can.Interior.Pattern = StyleInteriorPattern.Solid;
+        styleTotal2Can.Font.Size = 8;
+        styleTotal2Can.Font.Color = "Black";
+        styleTotal2Can.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        styleTotal2Can.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal2Can.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal2Can.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotal2Can.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotal2Can.NumberFormat = "#,##0.00";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        styleTotal2Can.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle styleTotalN = styles.Add("styleTotalN");
+        styleTotalN.Font.Bold = true;
+        styleTotalN.Interior.Color = "Silver";
+        styleTotalN.Interior.Pattern = StyleInteriorPattern.Solid;
+        styleTotalN.Font.Size = 8;
+        styleTotalN.Font.Color = "Red";
+        styleTotalN.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        styleTotalN.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotalN.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotalN.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        styleTotalN.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        styleTotalN.NumberFormat = "#,#";
+        styleTotalN.NumberFormat = "$#,##0.00";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        styleTotalN.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+
+        WorksheetStyle StyleText = styles.Add("StyleText");
+        StyleText.Font.Bold = true;
+        //worksheetStyle6.Interior.Color = "Silver";
+        StyleText.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleText.Font.Size = 8;
+        StyleText.Font.Color = "Black";
+        StyleText.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleText.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleText.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleText.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleText.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleText.NumberFormat = "#,#";
+        //worksheetStyle6.NumberFormat = "$#,###.####";
+        StyleText.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+
+
+        WorksheetStyle StyleMoney = styles.Add("StyleMoney");
+        StyleMoney.Font.Bold = true;
+        //StyleMoney.Interior.Color = "Silver";
+        StyleMoney.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleMoney.Font.Size = 8;
+        StyleMoney.Font.Color = "Black";
+        StyleMoney.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleMoney.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleMoney.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        //worksheetStyle6.NumberFormat = "#,#";
+        StyleMoney.NumberFormat = "$#,##0.00";
+        StyleMoney.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleMoney3 = styles.Add("StyleMoney3");
+        StyleMoney3.Font.Bold = true;
+        //StyleMoney.Interior.Color = "Silver";
+        StyleMoney3.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleMoney3.Font.Size = 8;
+        StyleMoney3.Font.Color = "Black";
+        StyleMoney3.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleMoney3.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleMoney3.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney3.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney3.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        //worksheetStyle6.NumberFormat = "#,#";
+        StyleMoney3.NumberFormat = "$#,##0.00000000";
+        StyleMoney3.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleMoney2 = styles.Add("StyleMoney2");
+        StyleMoney2.Font.Bold = true;
+        //StyleMoney.Interior.Color = "Silver";
+        StyleMoney2.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleMoney2.Font.Size = 8;
+        StyleMoney2.Font.Color = "Black";
+        StyleMoney2.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleMoney2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleMoney2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoney2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        //worksheetStyle6.NumberFormat = "#,#";
+        StyleMoney2.NumberFormat = "$#,##0.00";
+        StyleMoney2.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleMoneyN = styles.Add("StyleMoneyN");
+        StyleMoneyN.Font.Bold = true;
+        //StyleMoney.Interior.Color = "Silver";
+        StyleMoneyN.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleMoneyN.Font.Size = 8;
+        StyleMoneyN.Font.Color = "Red";
+        StyleMoneyN.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleMoneyN.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleMoneyN.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoneyN.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleMoneyN.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        //worksheetStyle6.NumberFormat = "#,#";
+        StyleMoneyN.NumberFormat = "$#,##0.00";
+        StyleMoneyN.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleCant = styles.Add("StyleCant");
+        StyleCant.Font.Bold = true;
+        //StyleCant.Interior.Color = "Silver";
+        StyleCant.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleCant.Font.Size = 8;
+        StyleCant.Font.Color = "Black";
+        StyleCant.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleCant.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCant.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCant.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCant.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCant.NumberFormat = "#,##0.00";
+        StyleCant.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleCant2 = styles.Add("StyleCant2");
+        StyleCant2.Font.Bold = true;
+        //StyleCant.Interior.Color = "Silver";
+        StyleCant2.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleCant2.Font.Size = 8;
+        StyleCant2.Font.Color = "Black";
+        StyleCant2.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleCant2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCant2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCant2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCant2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCant2.NumberFormat = "#,##0.00";
+        StyleCant2.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+        WorksheetStyle StyleCantN = styles.Add("StyleCantN");
+        StyleCantN.Font.Bold = true;
+        //StyleCant.Interior.Color = "Silver";
+        StyleCantN.Interior.Pattern = StyleInteriorPattern.Solid;
+        StyleCantN.Font.Size = 8;
+        StyleCantN.Font.Color = "Red";
+        StyleCantN.Alignment.Horizontal = StyleHorizontalAlignment.Left;
+        StyleCantN.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCantN.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCantN.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#F2F8FF";
+        StyleCantN.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#F2F8FF";
+        StyleCantN.NumberFormat = "#,##0.000000";
+        StyleCantN.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+
+
+
+        WorksheetStyle worksheetStyle7 = styles.Add("sPayNumber");
+        worksheetStyle7.Font.Bold = true;
+        worksheetStyle7.Interior.Color = "#7DCC7D";
+        worksheetStyle7.Font.Size = 8;
+        worksheetStyle7.Font.Color = "Black";
+        worksheetStyle7.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        worksheetStyle7.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#7DCC7D";
+        worksheetStyle7.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#7DCC7D";
+        worksheetStyle7.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#7DCC7D";
+        worksheetStyle7.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#7DCC7D";
+
+
+        WorksheetStyle Format1 = styles.Add("Format1");
+        Format1.Font.Bold = true;
+        Format1.Interior.Color = "#A3C0E8";
+        Format1.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format1.Font.Size = 8;
+        Format1.Font.Color = "Black";
+        Format1.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format1.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#A3C0E8";
+        Format1.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#A3C0E8";
+        Format1.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#A3C0E8";
+        Format1.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#A3C0E8";
+
+        WorksheetStyle Format2 = styles.Add("Format2");
+        Format2.Font.Bold = true;
+        Format2.Interior.Color = "#66FF00";
+        Format2.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format2.Font.Size = 8;
+        Format2.Font.Color = "Black";
+        Format2.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format2.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#66FF00";
+        Format2.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#66FF00";
+        Format2.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#66FF00";
+        Format2.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#66FF00";
+
+        WorksheetStyle Format3 = styles.Add("Format3");
+        Format3.Font.Bold = true;
+        Format3.Interior.Color = "#CCCC00";
+        Format3.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format3.Font.Size = 8;
+        Format3.Font.Color = "Black";
+        Format3.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format3.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#CCCC00";
+        Format3.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#CCCC00";
+        Format3.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#CCCC00";
+        Format3.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#CCCC00";
+
+        WorksheetStyle Format4 = styles.Add("Format4");
+        Format4.Font.Bold = true;
+        Format4.Interior.Color = "#990000";
+        Format4.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format4.Font.Size = 8;
+        Format4.Font.Color = "Black";
+        Format4.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format4.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#990000";
+        Format4.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#990000";
+        Format4.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#990000";
+        Format4.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#990000";
+
+        WorksheetStyle Format5 = styles.Add("Format5");
+        Format5.Font.Bold = true;
+        Format5.Interior.Color = "#7DCC7D";
+        Format5.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format5.Font.Size = 8;
+        Format5.Font.Color = "Black";
+        Format5.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format5.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "#7DCC7D";
+        Format5.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "#7DCC7D";
+        Format5.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "#7DCC7D";
+        Format5.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "#7DCC7D";
+
+        WorksheetStyle Format6 = styles.Add("Format6");
+        Format6.Font.Bold = true;
+        Format6.Interior.Color = "Silver";
+        Format6.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format6.Font.Size = 8;
+        Format6.Font.Color = "Black";
+        Format6.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format6.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "Silver";
+        Format6.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "Silver";
+        Format6.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "Silver";
+        Format6.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "Silver";
+
+        WorksheetStyle Format7 = styles.Add("Format7");
+        Format7.Font.Bold = true;
+        Format7.Interior.Color = "Gray";
+        Format7.Interior.Pattern = StyleInteriorPattern.Solid;
+        Format7.Font.Size = 8;
+        Format7.Font.Color = "Black";
+        Format7.Alignment.Horizontal = StyleHorizontalAlignment.Right;
+        Format7.Borders.Add(StylePosition.Bottom, LineStyleOption.Continuous, 2).Color = "Gray";
+        Format7.Borders.Add(StylePosition.Left, LineStyleOption.Continuous, 1).Color = "Gray";
+        Format7.Borders.Add(StylePosition.Right, LineStyleOption.Continuous, 1).Color = "Gray";
+        Format7.Borders.Add(StylePosition.Top, LineStyleOption.Continuous, 2).Color = "Gray";
+
+    }
+    
+    private string Format(string value)
+    {        
+        string format = "";
+        if (value.Contains("1."))
+            format = "Format1";
+        if (value.Contains("2."))
+            format =  "Format2";
+        if (value.Contains("3."))
+            format = "Format3";
+        if (value.Contains("4."))
+            format = "Format4";
+        if (value.Contains("5."))
+            format = "Format5";
+        if (value.Contains("6."))
+            format  = "Format6";
+        if (value.Contains("7."))
+            format = "Format7";
+        return format;
+    }
+
+    public void MOSUBFRENTE(WorksheetCollection sheets, string intObra)
+    {
+        DataTable dt;
+        DataTable dtFrentes;
+        DataTable dtPartidas;
+        DataTable dtInsumos;
+        DataRow drFrentes;
+        DataRow drPartida;
+        DataRow drInsumos;
+        decimal importe;
+        decimal cantidad;
+        string fecha = DateTime.Now.ToString();
+
+        dtFrentes = Frentes(intObra);
+        dtPartidas = Partidas(intObra);
+
+        Worksheet worksheet = sheets.Add("MO y SUB " + intObra.ToString());
+        worksheet.Table.Columns.Add(50);//tipo
+        worksheet.Table.Columns.Add(50);//cons
+        worksheet.Table.Columns.Add(50);//tarjeta
+        worksheet.Table.Columns.Add(200);//desc_grupo  
+        worksheet.Table.Columns.Add(50);//Insumo
+        worksheet.Table.Columns.Add(100);//desc_grupo    				
+        worksheet.Table.Columns.Add(50);//unidad
+        worksheet.Table.Columns.Add(70);//precio
+
+        for (int i = 0; i < dtFrentes.Rows.Count; i++)
+        {
+            worksheet.Table.Columns.Add(70);//% Dif
+            worksheet.Table.Columns.Add(70);//IVA e Ind Marfil
+        }
+
+        WorksheetRow worksheetFrente = worksheet.Table.Rows.Add();
+
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+
+        for (int f = 0; f < dtFrentes.Rows.Count; f++)
+        {
+            drFrentes = dtFrentes.Rows[f];
+            worksheetFrente.Cells.Add(drFrentes["strClave"].ToString(), DataType.String, "sHeader2").MergeAcross = 1;
+        }
+
+        WorksheetRow worksheetTitle = worksheet.Table.Rows.Add();
+
+        worksheetTitle.Cells.Add("TIPO", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("CONS", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("TARJETA", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("DESC. TARJETA", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("INSUMO", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("DESCRIPCION", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("U", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("PRECIO", DataType.String, "sHeader");
+
+        for (int j = 0; j < dtFrentes.Rows.Count; j++)
+        {
+            worksheetTitle.Cells.Add("CANTIDAD", DataType.String, "sHeader");
+            worksheetTitle.Cells.Add("IMPORTE", DataType.String, "sHeader");
+        }
+              
+        for (int k = 0; k < dtPartidas.Rows.Count; k++)
+        {
+            drPartida = dtPartidas.Rows[k];
+
+            WorksheetRow worksheetPartida = worksheet.Table.Rows.Add();
+
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("Partida:", DataType.String, "Default");
+            worksheetPartida.Cells.Add(drPartida["strClave"].ToString(), DataType.String, "Default").MergeAcross = 6;
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+
+            VetecMarfilDO.VetecDALHelper DALHelper;
+            DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+            dt = DALHelper.GetTableFromQuery("usp_tbPUTarjetaArticuloControl_Rep_MOSUB " + intObra.ToString() + "," + drPartida["intPartida"].ToString());
+
+            DALHelper = null;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+                drInsumos = dt.Rows[i];
+
+                worksheetRowInsumo.Cells.Add(drInsumos["Tipo"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["CONS"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Tarjeta"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["DescTarjeta"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Insumo"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Descripcion"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["M"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Precio"].ToString(), DataType.String, "StyleCant");               
+
+                for (int j = 0; j < dtFrentes.Rows.Count; j++)
+                {                   
+                    drFrentes = dtFrentes.Rows[j];
+
+                    if (drInsumos["Cantidad" + drFrentes["strClave"].ToString()].ToString() != "0.000000")
+                    {
+                        worksheetRowInsumo.Cells.Add(drInsumos["Cantidad" + drFrentes["strClave"].ToString()].ToString(), DataType.String, "StyleCant");
+                        worksheetRowInsumo.Cells.Add(drInsumos["Importe" + drFrentes["strClave"].ToString()].ToString(), DataType.String, "StyleCant");
+                    }
+                    else
+                    {
+                        worksheetRowInsumo.Cells.Add("-", DataType.String, "StyleCant");
+                        worksheetRowInsumo.Cells.Add("-", DataType.String, "StyleCant");
+                    }
+                }
+                //worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "StyleCant");         
+            }
+
+            WorksheetRow worksheetPartida2 = worksheet.Table.Rows.Add();
+
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default").MergeAcross = 6;
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+        }
+                  
+        worksheet.Options.Selected = true;
+        worksheet.Options.FreezePanes = true;
+        worksheet.Options.FitToPage = true;
+        worksheet.Options.SplitHorizontal = 1;
+        worksheet.Options.TopRowBottomPane = 1;
+        worksheet.Options.ActivePane = 2;
+        worksheet.Options.ProtectObjects = false;
+        worksheet.Options.ProtectScenarios = false;
+        worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet.Options.Print.PaperSizeIndex = 9;
+        worksheet.Options.Print.Scale = 85;
+        worksheet.Options.Print.FitHeight = 100;
+        worksheet.Options.Print.ValidPrinterInfo = true;       
+    }
+
+    public void TarjetaPartida(WorksheetCollection sheets, string intObra)
+    {
+        DataTable dt;
+        DataTable dtFrentes;
+        DataTable dtPartidas;
+        DataTable dtInsumos;
+        DataRow drFrentes;
+        DataRow drPartida;
+        DataRow drInsumos;
+        string fecha = DateTime.Now.ToString();
+
+        dtFrentes = Frentes(intObra);
+        dtPartidas = Partidas(intObra);
+
+        Worksheet worksheet = sheets.Add("Tarjetas " + intObra.ToString());       
+        worksheet.Table.Columns.Add(50);//cons
+        worksheet.Table.Columns.Add(50);//tarjeta
+        worksheet.Table.Columns.Add(200);//desc_grupo         
+        worksheet.Table.Columns.Add(70);//precio
+
+        for (int i = 0; i < dtFrentes.Rows.Count; i++)
+        {
+            worksheet.Table.Columns.Add(70);//% Dif
+            worksheet.Table.Columns.Add(70);//IVA e Ind Marfil
+        }
+
+        WorksheetRow worksheetFrente = worksheet.Table.Rows.Add();
+
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+        worksheetFrente.Cells.Add("", DataType.String, "sHeader2");
+
+        for (int f = 0; f < dtFrentes.Rows.Count; f++)
+        {
+            drFrentes = dtFrentes.Rows[f];
+            worksheetFrente.Cells.Add(drFrentes["strClave"].ToString(), DataType.String, "sHeader2").MergeAcross = 1;
+        }
+
+        WorksheetRow worksheetTitle = worksheet.Table.Rows.Add();
+        
+        worksheetTitle.Cells.Add("CONS", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("TARJETA", DataType.String, "sHeader");
+        worksheetTitle.Cells.Add("DESC. TARJETA", DataType.String, "sHeader");       
+        worksheetTitle.Cells.Add("PRECIO", DataType.String, "sHeader");
+
+        for (int j = 0; j < dtFrentes.Rows.Count; j++)
+        {
+            worksheetTitle.Cells.Add("CANTIDAD", DataType.String, "sHeader");
+            worksheetTitle.Cells.Add("IMPORTE", DataType.String, "sHeader");
+        }
+
+        for (int k = 0; k < dtPartidas.Rows.Count; k++)
+        {
+            drPartida = dtPartidas.Rows[k];
+
+            WorksheetRow worksheetPartida = worksheet.Table.Rows.Add();
+
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("Partida:", DataType.String, "Default");
+            worksheetPartida.Cells.Add(drPartida["strClave"].ToString(), DataType.String, "Default").MergeAcross = 2;
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+            worksheetPartida.Cells.Add("", DataType.String, "Default");
+
+            VetecMarfilDO.VetecDALHelper DALHelper;
+            DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+            dt = DALHelper.GetTableFromQuery("usp_tbPUTarjetaPartida_Rep " + intObra.ToString() + "," + drPartida["intPartida"].ToString());
+
+            DALHelper = null;
+
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+                drInsumos = dt.Rows[i];
+              
+                worksheetRowInsumo.Cells.Add(drInsumos["CONS"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Tarjeta"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["DescTarjeta"].ToString(), DataType.String, "StyleText");               
+                worksheetRowInsumo.Cells.Add(drInsumos["Precio"].ToString(), DataType.String, "StyleCant");
+
+                for (int j = 0; j < dtFrentes.Rows.Count; j++)
+                {
+                    drFrentes = dtFrentes.Rows[j];
+
+                    if (drInsumos["Cantidad" + drFrentes["strClave"].ToString()].ToString() != "0.000000")
+                    {
+                        worksheetRowInsumo.Cells.Add(drInsumos["Cantidad" + drFrentes["strClave"].ToString()].ToString(), DataType.String, "StyleCant");
+                        worksheetRowInsumo.Cells.Add(drInsumos["Importe" + drFrentes["strClave"].ToString()].ToString(), DataType.String, "StyleCant");
+                    }
+                    else
+                    {
+                        worksheetRowInsumo.Cells.Add("-", DataType.String, "StyleCant");
+                        worksheetRowInsumo.Cells.Add("-", DataType.String, "StyleCant");
+                    }
+                }
+                //worksheetRowInsumo.Cells.Add(drInsumos["DifXCasa"].ToString(), DataType.Number, "StyleCant");         
+            }
+
+            WorksheetRow worksheetPartida2 = worksheet.Table.Rows.Add();
+
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default").MergeAcross = 2;
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+            worksheetPartida2.Cells.Add("", DataType.String, "Default");
+        }
+
+        worksheet.Options.Selected = true;
+        worksheet.Options.FreezePanes = true;
+        worksheet.Options.FitToPage = true;
+        worksheet.Options.SplitHorizontal = 1;
+        worksheet.Options.TopRowBottomPane = 1;
+        worksheet.Options.ActivePane = 2;
+        worksheet.Options.ProtectObjects = false;
+        worksheet.Options.ProtectScenarios = false;
+        worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet.Options.Print.PaperSizeIndex = 9;
+        worksheet.Options.Print.Scale = 85;
+        worksheet.Options.Print.FitHeight = 100;
+        worksheet.Options.Print.ValidPrinterInfo = true;
+    }
+
+    private DataTable Frentes(string intObra)
+    {
+        DataTable dt;
+        VetecMarfilDO.VetecDALHelper DALHelper;
+        DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+        dt = DALHelper.GetTableFromQuery("SELECT intFrente,CONVERT(int,strClave) AS strClave FROM tbPUFrente WHERE intObra =" + intObra.ToString() + " ORDER BY CONVERT(int,strClave)");
+
+        DALHelper = null;
+        return dt;
+    }
+
+    private DataTable Partidas(string intObra)
+    {
+        DataTable dt;
+        //VetecMarfilDO.VetecDALHelper DALHelper;
+        //DALHelper = new VetecMarfilDO.VetecDALHelper();
+        Frentes objFrente = new Frentes();
+        dt = objFrente.GetPartidaExcel(intObra);
+
+        //dt = DALHelper.GetTableFromQuery("SELECT intPartida,strClave + ' ' + strDescripcion as strClave FROM tbPUPartida WHERE intObra =" + intObra.ToString() + " ORDER BY CONVERT(int,strClave)");
+
+        //DALHelper = null;
+        return dt;
+    }
+
+    public void Resumen(WorksheetCollection sheets, string obras, string strIva, string strIndirectos, string strFactor, string strProteccion)
+    {
+        DataTable dt;
+        DataRow drInsumos;
+        string fecha = DateTime.Now.ToString();
+        string colonias = Colonias(obras);
+        string sector = Sector(obras);
+        string Numero = Casas(obras);
+        string strObras = Obras(obras);
+
+        Worksheet worksheet = sheets.Add("Resumen");
+        worksheet.Table.Columns.Add(100);//Obra
+        worksheet.Table.Columns.Add(80);//No. Casas
+        worksheet.Table.Columns.Add(100);//m2 constr.
+        worksheet.Table.Columns.Add(100);//Costo Directo
+        worksheet.Table.Columns.Add(100);//Tabulador
+        worksheet.Table.Columns.Add(100);//Con Inds 20%+ 3%
+        worksheet.Table.Columns.Add(100);// $/M2       				
+        worksheet.Table.Columns.Add(100);//Costo Directo
+        worksheet.Table.Columns.Add(100);//Con Inds 20%+ 3%
+        worksheet.Table.Columns.Add(100);// $/M2  
+        worksheet.Table.Columns.Add(100);//Costo Inventario
+        worksheet.Table.Columns.Add(100);//$/M2
+
+        WorksheetRow worksheetBlank1 = worksheet.Table.Rows.Add();
+
+        worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        worksheetBlank1.Cells.Add("PRESUPUESTO .-", DataType.String, "sHeader").MergeAcross = 3;
+        worksheetBlank1.Cells.Add("GASTADO REAL .-", DataType.String, "sHeader").MergeAcross = 2;
+        worksheetBlank1.Cells.Add("VENTA .-", DataType.String, "sHeader").MergeAcross = 1;
+
+        WorksheetRow worksheetBlankCol = worksheet.Table.Rows.Add();
+
+        worksheetBlankCol.Cells.Add("Obra", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Inicio", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Terminación", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("No. Casas", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("m2 constr.", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Costo Directo", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Tabulador", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Con Inds 20%", DataType.String, "sHeader");//+ 3%
+        worksheetBlankCol.Cells.Add("$/M2  ", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Costo Directo", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Con Inds 20%", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("$/M2", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("Costo Inventario", DataType.String, "sHeader");
+        worksheetBlankCol.Cells.Add("$/M2", DataType.String, "sHeader");
+
+        //WorksheetRow worksheetBlank2 = worksheet.Table.Rows.Add();
+
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+
+
+        Obra objCO = new Obra();
+        dt = objCO.GetTableControlObraResumen(obras, strIva, strIndirectos, strFactor, strProteccion);
+
+        for (int i = 0; i < dt.Rows.Count; i++)
+        {
+            WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+            drInsumos = dt.Rows[i];
+
+            if (drInsumos["Obra"].ToString() == "TOTAL")
+            {
+                worksheetRowInsumo.Cells.Add(drInsumos["Obra"].ToString(), DataType.String, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["Inicio"].ToString(), DataType.String, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["Terminacion"].ToString(), DataType.String, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["Casas"].ToString(), DataType.Number, "styleTotal2Can");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2"].ToString(), DataType.Number, "styleTotal2Can");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuesto"].ToString(), DataType.Number, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["Tabulador"].ToString(), DataType.String, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuestoInd"].ToString(), DataType.Number, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2PresupuestoInd"].ToString(), DataType.Number, "styleTotal2Can");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastado"].ToString(), DataType.Number, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastadoInd"].ToString(), DataType.Number, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2GastadoInd"].ToString(), DataType.Number, "styleTotal2Can");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventario"].ToString(), DataType.Number, "styleTotal2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventarioM2"].ToString(), DataType.Number, "styleTotal2Can");
+            }
+            else
+            {
+                worksheetRowInsumo.Cells.Add(drInsumos["Obra"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Inicio"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Terminacion"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["Casas"].ToString(), DataType.Number, "StyleCant2");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2"].ToString(), DataType.Number, "StyleCant2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuesto"].ToString(), DataType.Number, "StyleMoney2");
+                worksheetRowInsumo.Cells.Add(drInsumos["Tabulador"].ToString(), DataType.String, "StyleText");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuestoInd"].ToString(), DataType.Number, "StyleMoney2");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2PresupuestoInd"].ToString(), DataType.Number, "StyleCant2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastado"].ToString(), DataType.Number, "StyleMoney2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastadoInd"].ToString(), DataType.Number, "StyleMoney2");
+                worksheetRowInsumo.Cells.Add(drInsumos["M2GastadoInd"].ToString(), DataType.Number, "StyleCant2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventario"].ToString(), DataType.Number, "StyleMoney2");
+                worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventarioM2"].ToString(), DataType.Number, "StyleCant2");
+            }
+        }
+
+        worksheet.Options.Selected = true;
+        worksheet.Options.FreezePanes = true;
+        worksheet.Options.FitToPage = true;
+        worksheet.Options.SplitHorizontal = 1;
+        worksheet.Options.TopRowBottomPane = 1;
+        worksheet.Options.ActivePane = 2;
+        worksheet.Options.ProtectObjects = false;
+        worksheet.Options.ProtectScenarios = false;
+        worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet.Options.Print.PaperSizeIndex = 9;
+        worksheet.Options.Print.Scale = 85;
+        worksheet.Options.Print.FitHeight = 100;
+        worksheet.Options.Print.ValidPrinterInfo = true;       
+    }
+
+    public void Contractual(WorksheetCollection sheets, string obras, string intcontratista)
+    {
+        DataTable dt;
+        DataRow drInsumos;
+        string fecha = DateTime.Now.ToString();
+        //string colonias = Colonias(obras);
+        //string sector = Sector(obras);
+        //string Numero = Casas(obras);
+        string strObras = Obras(obras);
+
+        Worksheet worksheet = sheets.Add("Control Contractual");
+        worksheet.Table.Columns.Add(100);//Obra
+        worksheet.Table.Columns.Add(80);//No. Casas
+        worksheet.Table.Columns.Add(100);//m2 constr.
+        worksheet.Table.Columns.Add(100);//Costo Directo
+        worksheet.Table.Columns.Add(100);//Con Inds 20%+ 3%
+        worksheet.Table.Columns.Add(100);// $/M2       				
+        worksheet.Table.Columns.Add(100);//Costo Directo
+        worksheet.Table.Columns.Add(100);//Con Inds 20%+ 3%
+        worksheet.Table.Columns.Add(100);// $/M2  
+        worksheet.Table.Columns.Add(100);//Costo Inventario
+        worksheet.Table.Columns.Add(100);//$/M2
+
+        //WorksheetRow worksheetBlank1 = worksheet.Table.Rows.Add();
+
+        //worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        //worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        //worksheetBlank1.Cells.Add("", DataType.String, "sHeader");
+        //worksheetBlank1.Cells.Add("PRESUPUESTO .-", DataType.String, "sHeader").MergeAcross = 2;
+        //worksheetBlank1.Cells.Add("GASTADO REAL .-", DataType.String, "sHeader").MergeAcross = 2;
+        //worksheetBlank1.Cells.Add("VENTA .-", DataType.String, "sHeader").MergeAcross = 1;
+
+        //WorksheetRow worksheetBlankCol = worksheet.Table.Rows.Add();
+
+        //worksheetBlankCol.Cells.Add("Obra", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("No. Casas", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("m2 constr.", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("Costo Directo", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("Con Inds 20%+ 3%", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("$/M2  ", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("Costo Directo", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("Con Inds 20%+ 3%", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("$/M2", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("Costo Inventario", DataType.String, "sHeader");
+        //worksheetBlankCol.Cells.Add("$/M2", DataType.String, "sHeader");
+
+        //WorksheetRow worksheetBlank2 = worksheet.Table.Rows.Add();
+
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+        //worksheetBlank2.Cells.Add("", DataType.String, "Default");
+
+        //VetecMarfilDO.VetecDALHelper DALHelper;
+        //DALHelper = new VetecMarfilDO.VetecDALHelper();
+
+        //dt = DALHelper.GetTableFromQuery("EXEC usp_tbcontrolobra_ResumenObras '" + obras + "'," + strIva + "," + strIndirectos + "," + strFactor + "," + strProteccion);
+
+        //DALHelper = null;
+
+        //for (int i = 0; i < dt.Rows.Count; i++)
+        //{
+        //    WorksheetRow worksheetRowInsumo = worksheet.Table.Rows.Add();
+        //    drInsumos = dt.Rows[i];
+
+        //    if (drInsumos["Obra"].ToString() == "TOTAL")
+        //    {
+        //        worksheetRowInsumo.Cells.Add(drInsumos["Obra"].ToString(), DataType.String, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["Casas"].ToString(), DataType.Number, "styleTotal2Can");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2"].ToString(), DataType.Number, "styleTotal2Can");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuesto"].ToString(), DataType.Number, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuestoInd"].ToString(), DataType.Number, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2PresupuestoInd"].ToString(), DataType.Number, "styleTotal2Can");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastado"].ToString(), DataType.Number, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastadoInd"].ToString(), DataType.Number, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2GastadoInd"].ToString(), DataType.Number, "styleTotal2Can");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventario"].ToString(), DataType.Number, "styleTotal2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventarioM2"].ToString(), DataType.Number, "styleTotal2Can");
+        //    }
+        //    else
+        //    {
+        //        worksheetRowInsumo.Cells.Add(drInsumos["Obra"].ToString(), DataType.String, "StyleText");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["Casas"].ToString(), DataType.Number, "StyleCant2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2"].ToString(), DataType.Number, "StyleCant2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuesto"].ToString(), DataType.Number, "StyleMoney2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImportePresupuestoInd"].ToString(), DataType.Number, "StyleMoney2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2PresupuestoInd"].ToString(), DataType.Number, "StyleCant2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastado"].ToString(), DataType.Number, "StyleMoney2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteGastadoInd"].ToString(), DataType.Number, "StyleMoney2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["M2GastadoInd"].ToString(), DataType.Number, "StyleCant2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventario"].ToString(), DataType.Number, "StyleMoney2");
+        //        worksheetRowInsumo.Cells.Add(drInsumos["ImporteInventarioM2"].ToString(), DataType.Number, "StyleCant2");
+        //    }
+        //}
+
+        worksheet.Options.Selected = true;
+        worksheet.Options.FreezePanes = true;
+        worksheet.Options.FitToPage = true;
+        worksheet.Options.SplitHorizontal = 1;
+        worksheet.Options.TopRowBottomPane = 1;
+        worksheet.Options.ActivePane = 2;
+        worksheet.Options.ProtectObjects = false;
+        worksheet.Options.ProtectScenarios = false;
+        worksheet.Options.PageSetup.Layout.CenterHorizontal = true;
+        worksheet.Options.PageSetup.Header.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.Footer.Margin = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Bottom = 0.5905512F;
+        worksheet.Options.PageSetup.PageMargins.Left = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Right = 0.3937008F;
+        worksheet.Options.PageSetup.PageMargins.Top = 0.5905512F;
+        worksheet.Options.Print.PaperSizeIndex = 9;
+        worksheet.Options.Print.Scale = 85;
+        worksheet.Options.Print.FitHeight = 100;
+        worksheet.Options.Print.ValidPrinterInfo = true;
+    }
+
+}

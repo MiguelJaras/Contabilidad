@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="15.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00DBD3AE-FD34-4DA6-A578-D90E95C551AA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Contabilidad.DataAccess</RootNamespace>
+    <AssemblyName>Contabilidad.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DAC.Ares.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ApplicationBlocks.Data, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base.cs" />
+    <Compile Include="catUser.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DACConciliacion.cs" />
+    <Compile Include="DACExcelPruebas.cs" />
+    <Compile Include="DACServidor.cs" />
+    <Compile Include="DACNotaCreditoGenerar.cs" />
+    <Compile Include="DACFacturasGenerar.cs" />
+    <Compile Include="DACCargarProveedor.cs" />
+    <Compile Include="DACFacturasEstimacionesGenerar.cs" />
+    <Compile Include="DACFacturasGenerarComisiones.cs" />
+    <Compile Include="DACIndividualizacion.cs" />
+    <Compile Include="DACParametros.cs" />
+    <Compile Include="DACProspectosEsc.cs" />
+    <Compile Include="DACTempPoliza_Remplazo.cs" />
+    <Compile Include="DACArea.cs" />
+    <Compile Include="DACDigBalanza.cs" />
+    <Compile Include="DACDigCuentas.cs" />
+    <Compile Include="DACAfectaSaldos.cs" />
+    <Compile Include="DACBalance.cs" />
+    <Compile Include="DACCerrarPeriodo.cs" />
+    <Compile Include="DACColonia.cs" />
+    <Compile Include="DACCuentas.cs" />
+    <Compile Include="DACCuentasRet.cs" />
+    <Compile Include="DACEdoFinancieros.cs" />
+    <Compile Include="DACEstadoResultados.cs" />
+    <Compile Include="DACEstados.cs" />
+    <Compile Include="DACEstadosFinRubros.cs" />
+    <Compile Include="DACFactorizacion.cs" />
+    <Compile Include="DACIva.cs" />
+    <Compile Include="DACPolizaDet.cs" />
+    <Compile Include="DACArticulo.cs" />
+    <Compile Include="DACClientes.cs" />
+    <Compile Include="DACConciliaciones.cs" />
+    <Compile Include="DACCuentasBancarias.cs" />
+    <Compile Include="DACEmpresa.cs" />
+    <Compile Include="DACEstructuraPolizaDet.cs" />
+    <Compile Include="DACEstructuraPolizaEnc.cs" />
+    <Compile Include="DACFactura.cs" />
+    <Compile Include="DACFacturaDet.cs" />
+    <Compile Include="DACList.cs" />
+    <Compile Include="DACMenu.cs" />
+    <Compile Include="DACObra.cs" />
+    <Compile Include="DACOrdenCompra.cs" />
+    <Compile Include="DACOrdenCompraDet.cs" />
+    <Compile Include="DACPoliza.cs" />
+    <Compile Include="DACPolizasEnc.cs" />
+    <Compile Include="DACProspecto.cs" />
+    <Compile Include="DACProveedor.cs" />
+    <Compile Include="DACRubros.cs" />
+    <Compile Include="DACRubrosCuentas.cs" />
+    <Compile Include="DACRubrosTipos.cs" />
+    <Compile Include="DACSector.cs" />
+    <Compile Include="DACTipoMovimiento.cs" />
+    <Compile Include="DACTiposPoliza.cs" />
+    <Compile Include="DACUsuario.cs" />
+    <Compile Include="DACValues.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Contabilidad.Entity\Contabilidad.Entity.csproj">
+      <Project>{eb9c600d-302e-44b9-a48b-8f4759fcec24}</Project>
+      <Name>Contabilidad.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

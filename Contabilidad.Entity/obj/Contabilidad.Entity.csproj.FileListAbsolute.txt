@@ -1,0 +1,40 @@
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb
+C:\Compartida\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.dll
+C:\Compartida\Contabilidad\Contabilidad.Entity\bin\Debug\Contabilidad.Entity.pdb
+C:\Compartida\Contabilidad\Contabilidad.Entity\obj\Debug\ResolveAssemblyReference.cache
+C:\Compartida\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.dll
+C:\Compartida\Contabilidad\Contabilidad.Entity\obj\Debug\Contabilidad.Entity.pdb

@@ -1,0 +1,137 @@
+﻿*{
+ margin: 0;   
+}
+/*html{background-image:url(../../img/varias/bgpagetop.png); overflow-y:scroll;}*/
+body{
+	font-weight: normal;
+	font-size: 9pt;
+    COLOR: #65647A;
+	text-transform: none;
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	padding: 0;
+	margin: 0;                   	
+}
+.div-head{
+   display:scroll;
+   position:fixed;
+   top:0;
+   right:0px;
+   z-index: 1000;
+   width:100%;
+   height:39px;       
+}
+#head-contenedor{width:960px; /*height:520px;*/ margin: 0 auto;}
+
+#contenedor{width:960px; /*height:520px;*/ margin: 39px auto;  /*border:solid 1px red; */}
+
+#divPlaceHoldertop{ margin-top:5px; height:10px; width:960px; background: url(../../img/varias/bgcontenidotop.png) no-repeat;  }
+#divPlaceHolder{ height:100%; width:960px; background: url(../../img/varias/bgcontenidocenter.png) repeat-y;  }
+#divPlaceHolderbottom{ height:10px; width:960px; background: url(../../img/varias/bgcontenidobottom.png) no-repeat;  }
+
+.obligatorio{ color:Red; font-weight: bold;}
+.bgToolbar {
+    background-color: #fff;
+}
+.Titulo
+{
+	font-weight: bold;
+	font-size: 10pt;
+    color: #ffffff;
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	text-transform:uppercase;
+}
+.RowAltStyle{ font-size: 9pt; font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif; height:25px; border: solid 1px #d8e8ff; }
+.RowStyle {font-size: 9pt; font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif; height:25px;  border: solid 1px #d8e8ff; }
+.HeaderStyle
+{
+	cursor:hand; 
+    font-size: 20pt;
+	font-family: Tahoma, Arial, Verdana, Helvetica, sans-serif;
+	color:#000000;
+	border: solid 1px #d5d5d5;
+	border-style: solid;
+	border-width: 1px;    
+	vertical-align:middle;
+	height:25px;
+}
+.tablaestandar {
+	padding:  0 0 0 0;
+	margin: 0 0 0 0;
+	border-bottom: 1px solid #d3d3d3;
+	border-top: 1px solid #d3d3d3;
+	border-left: 1px solid #d3d3d3;
+	border-right: 1px solid #d3d3d3;
+	background-color: #ffffff;	
+	border-collapse:collapse;
+}
+td.CeldaEtiquetaCaptura {
+	background: #ffffff;
+	border-bottom: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	color: #464551;
+	text-align: right;
+}
+
+td.CeldaObjetoCaptura {
+	background: #ffffff;
+	padding: 2px 2px 2px 2px;
+	border-bottom: 1px solid #ffffff;
+	border-top: 1px solid #ffffff;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #ffffff;
+	color: #464551;
+	text-align: left;
+}
+.etiquetachico
+{
+	FONT-FAMILY: Arial, Tahoma,  Verdana, Helvetica, sans-serif;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;    
+    FONT-SIZE: 9pt;
+    BORDER-LEFT: medium none;
+    COLOR: #65647A;
+    BORDER-BOTTOM: medium none;
+}
+.etiquetamensaje
+{
+	FONT-FAMILY: Arial, Tahoma,  Verdana, Helvetica, sans-serif;
+    BORDER-RIGHT: medium none;
+    BORDER-TOP: medium none;    
+    FONT-SIZE: 11pt;
+    BORDER-LEFT: medium none;
+    COLOR: #65647A;
+    BORDER-BOTTOM: medium none;
+}
+select.ObjetoChico
+{
+   font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+   font-size: 9pt;
+   	
+}
+Input.ObjetoChico
+{
+   font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+   font-size: 9pt;	
+}
+textarea.ObjetoChico
+{
+   font-family: Arial, Tahoma, Verdana, Helvetica, sans-serif;
+   font-size: 9pt;
+   width: 98%;
+}
+.Boton
+{
+	border-width: 1px;
+	font-family: Arial,Tahoma, Verdana, Helvetica, sans-serif;
+	font-size: 8pt;	
+	margin-left: 1px;
+	margin-right: 1px;
+	background-repeat:no-repeat;
+	background-position: left center;
+	cursor: hand;
+	width: 100px;
+	height: 20px;
+}
+

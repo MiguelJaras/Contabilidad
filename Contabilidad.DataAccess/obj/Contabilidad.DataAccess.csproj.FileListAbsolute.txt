@@ -1,0 +1,56 @@
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Documents and Settings\isoto\Mis documentos\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Users\Ruben\Documents\Developer\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\mayo\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Users\RMORA\Desktop\SEM\Migracion Windows Server 2012\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+\\192.168.80.6\Proyectos\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.dll
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.DataAccess.pdb
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.dll
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\bin\Debug\Contabilidad.Entity.pdb
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\obj\Debug\ResolveAssemblyReference.cache
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.dll
+C:\Compartida\Contabilidad\Contabilidad.DataAccess\obj\Debug\Contabilidad.DataAccess.pdb
