@@ -27,7 +27,8 @@ namespace Contabilidad.DataAccess
 
                 SqlParameter[] arrPar = new SqlParameter[1];
                 arrPar[0] = new SqlParameter("@intEmpresa", SqlDbType.Int);
-                arrPar[0].Value = 0;               
+                arrPar[0].Value = 0;         
+            
 
                 try
                 {
