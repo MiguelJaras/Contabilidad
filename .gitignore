@@ -3,7 +3,7 @@
 ################################################################################
 
 /.vs
-/.vs/*
-/Contabilidad.Bussines/bin
-/Contabilidad.Entity/bin
-/Contabilidad.DataAccess/bin
+/.vs/
+/Contabilidad.Bussines/bin/
+/Contabilidad.Entity/bin/
+/Contabilidad.DataAccess/bin/
