@@ -47,6 +47,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DACConciliacion.cs" />
     <Compile Include="DACExcelPruebas.cs" />
+    <Compile Include="DACContraRecibos.cs" />
     <Compile Include="DACServidor.cs" />
     <Compile Include="DACNotaCreditoGenerar.cs" />
     <Compile Include="DACFacturasGenerar.cs" />

@@ -57,6 +57,7 @@
     <Compile Include="Conciliaciones.cs" />
     <Compile Include="ExcelPruebas.cs" />
     <Compile Include="ExcelXml.cs" />
+    <Compile Include="ContrRecibos.cs" />
     <Compile Include="Servidor.cs" />
     <Compile Include="NotaCreditoGenerar.cs" />
     <Compile Include="FacturasGenerar.cs" />

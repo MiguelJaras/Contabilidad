@@ -25,7 +25,7 @@ namespace Contabilidad.Bussines
         #region Sel
         public Entity_TipoMovimiento Sel(Entity_TipoMovimiento obj)
         {
-            return DACTipoMovimiento .Sel (obj);
+            return DACTipoMovimiento.Sel (obj);
         }
         #endregion
 

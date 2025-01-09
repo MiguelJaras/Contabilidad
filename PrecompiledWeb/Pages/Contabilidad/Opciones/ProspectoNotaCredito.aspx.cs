@@ -362,7 +362,7 @@ public partial class Pages_Contabilidad_Opciones_ProspectoNotaCredito : System.W
         }
         return rtnData;
     }
-    #endregion
+
 
     [WebMethod]
     public static string[] EliminarNC(int strNC, int strEmpresa, int strFolio, int strProspecto, string strFilePDF, string strFileXML)
@@ -386,6 +386,8 @@ public partial class Pages_Contabilidad_Opciones_ProspectoNotaCredito : System.W
         }
         return rtnData;
     }
+
+    #endregion
 
     #region DeleteFile
     public static string DeleteFile(string strEmpresa, string strFilePDF, string strFileXML)
