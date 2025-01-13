@@ -55,6 +55,7 @@
     <Compile Include="Colonia.cs" />
     <Compile Include="Conciliacion.cs" />
     <Compile Include="Conciliaciones.cs" />
+    <Compile Include="GenerarNC.cs" />
     <Compile Include="ExcelPruebas.cs" />
     <Compile Include="ExcelXml.cs" />
     <Compile Include="ContrRecibos.cs" />

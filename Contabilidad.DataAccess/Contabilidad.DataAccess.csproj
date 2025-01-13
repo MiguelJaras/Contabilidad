@@ -46,6 +46,7 @@
     <Compile Include="catUser.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DACConciliacion.cs" />
+    <Compile Include="DACGenerarNC.cs" />
     <Compile Include="DACExcelPruebas.cs" />
     <Compile Include="DACContraRecibos.cs" />
     <Compile Include="DACServidor.cs" />

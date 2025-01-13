@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Base.master" CodeFile="GeneracionCR.aspx.cs" Inherits="Contabilidad_Compra_Opciones_GeneracionCR" culture="es-mx" uiculture="es" %>
+<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Base.master" CodeFile="GeneracionNC.aspx.cs" Inherits="Contabilidad_Compra_Opciones_GeneracionNC" culture="es-mx" uiculture="es" %>
 <%@ Register Assembly="Anthem" Namespace="Anthem" TagPrefix="anthem" %>
 <asp:Content ID="Content" ContentPlaceHolderID="CPHBase" Runat="Server">      	       
      <script type="text/javascript" language="javascript">
@@ -177,24 +177,24 @@
             <td>
                 <div id="div-ListPanel" style="left: 0px; width: 83%; top: -10px">
                     <anthem:GridView ID="DgrdList" runat="server" AllowSorting="True" AutoGenerateColumns="False"
-                        CellPadding="0" CellSpacing="0" DataKeyNames="intContraRecibo" GridLines="None"
+                        CellPadding="0" CellSpacing="0" DataKeyNames="strNC" GridLines="None"
                         HeaderStyle-CssClass="dxgvHeader_PlasticBlue"
                         Width="100%">
                         <Columns>
                             <asp:BoundField DataField="Consecutivo" HeaderText="#">
                                 <itemstyle width="50px" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="strFactura" HeaderText="Folio Factura">
+                            <asp:BoundField DataField="strNC" ItemStyle-HorizontalAlign="Center" HeaderText="Nota Crédito">
                                 <itemstyle width="100px" />
                             </asp:BoundField>
+                             <asp:BoundField DataField="strFactura" HeaderText="Folio Factura">
+                                 <itemstyle width="100px" />
+                             </asp:BoundField>
                             <asp:BoundField DataField="strFolioFiscal" HeaderText="Folio Fiscal">
                                 <itemstyle width="230px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="dblTotal" ItemStyle-HorizontalAlign="Right" HeaderText="Importe">
                                 <itemstyle width="200px"  />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="intContraRecibo" ItemStyle-HorizontalAlign="Center" HeaderText="Contra Recibo">
-                                <itemstyle width="100px" />
                             </asp:BoundField>
                         </Columns>
                         <HeaderStyle CssClass="dxgvHeader_PlasticBlue" />
@@ -221,6 +221,12 @@
                          <td style="width: 60px; height: 9px">
                              &nbsp;
                          </td>
+                         <td style="width: 60px; height: 9px">
+                             &nbsp;
+                         </td>
+                          <td style="width: 60px; height: 9px">
+                              &nbsp;
+                          </td>
                         <td align="center" style="width:200px; height: 15px">
                             <anthem:Label ID="lblTotal" runat="server" CssClass="tLetra3"></anthem:Label>
                         </td>

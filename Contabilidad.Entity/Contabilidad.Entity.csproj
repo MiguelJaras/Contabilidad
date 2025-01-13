@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Entity_Conciliacion.cs" />
+    <Compile Include="Entity_GenerarNC.cs" />
     <Compile Include="Entity_ContraRecibos.cs" />
     <Compile Include="Entity_Servidor.cs" />
     <Compile Include="EntityNotaCreditoGenerar.cs" />

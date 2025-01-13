@@ -1,7 +1,7 @@
 ﻿var ProcessingBackGroundId  =   'dvProcessingBackGround';
 var ProcessingModalBoxId    =   'dvProcessingModalBox';
 var ImageProcessingId       =   'imgImageProcessing';
-var ImageProcessingSrc      =  '../Img/loading.gif';        
+var ImageProcessingSrc      =  '/../../../Img/loading.gif';        
 
 if (document.forms.length > 0){                    
     //document.forms[defaultFormIndex].onsubmit   =   form_onSubmit;

@@ -16,7 +16,7 @@ using System.IO;
 using System.Data.OleDb;
 using Excel;
 
-public partial class Contabilidad_Compra_Opciones_GeneracionCR : System.Web.UI.Page
+public partial class Contabilidad_Compra_Opciones_GeneracionNC : System.Web.UI.Page
 {
     public string realPath;
     Pages_Base toolbar;
@@ -115,11 +115,11 @@ public partial class Contabilidad_Compra_Opciones_GeneracionCR : System.Web.UI.P
         {
             try
             {
-                Entity_ContraRecibos obj;
-                obj = new Entity_ContraRecibos();
+                Entity_GenerarNC obj;
+                obj = new Entity_GenerarNC();
 
-                ContraRecibos pol;
-                pol = new ContraRecibos();
+                GenerarNC pol;
+                pol = new GenerarNC();
                 string value;
                 obj.IntEmpresa = txtEmpresa.Text == "" ? Contabilidad.SEMSession.GetInstance.IntEmpresa : Convert.ToInt32(txtEmpresa.Text);
                 obj.IntTM = Convert.ToInt32(txtTipoMovto.Text);
@@ -159,11 +159,13 @@ public partial class Contabilidad_Compra_Opciones_GeneracionCR : System.Web.UI.P
                         DataTable table = result.Tables[0];
                         foreach (DataRow row in table.Rows)
                         {
-                            string strFactura = row[0].ToString();
+                            string strNC = row[0].ToString();
                             string strFolio = row[1].ToString();
                             decimal dblTotal;
                             decimal.TryParse(row[2].ToString(), out dblTotal);
+                            string strFactura = row[3].ToString();
                             count++;
+                            obj.StrNC = strNC;
                             obj.StrFactura = strFactura;
                             obj.StrFolioFiscal = strFolio;
                             obj.DblTotal = dblTotal;
@@ -225,11 +227,11 @@ public partial class Contabilidad_Compra_Opciones_GeneracionCR : System.Web.UI.P
     #region Listado
     private void List()
     {
-        Entity_ContraRecibos cont;
-        cont = new Entity_ContraRecibos();
+        Entity_GenerarNC cont;
+        cont = new Entity_GenerarNC();
 
-        ContraRecibos ls;
-        ls = new ContraRecibos();
+        GenerarNC ls;
+        ls = new GenerarNC();
         DataTable dt = new DataTable();
 
         cont.IntEmpresa = txtEmpresa.Text == "" ? Contabilidad.SEMSession.GetInstance.IntEmpresa : Convert.ToInt32(txtEmpresa.Text);
